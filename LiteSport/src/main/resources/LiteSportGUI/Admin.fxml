@@ -41,12 +41,47 @@
                                     <Button fx:id="LeagueCreateButton" mnemonicParsing="false" onAction="#LeagueCreateButton" text="Create" />
                                  </children>
                               </VBox>
-                           </children></AnchorPane>
+                           </children>
+                    </AnchorPane>
                   </content>
                 </Tab>
                 <Tab text="Team">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <children>
+                                      <Label text="Create League">
+                                          <font>
+                                              <Font size="35.0" />
+                                          </font>
+                                      </Label>
+                                      <ChoiceBox fx:id="TeamCategoryCombobox" prefWidth="150.0">
+                                          <VBox.margin>
+                                              <Insets bottom="5.0" />
+                                          </VBox.margin>
+                                      </ChoiceBox>
+                                      <ChoiceBox fx:id="TeamLeagueCombobox" prefWidth="150.0">
+                                          <VBox.margin>
+                                              <Insets bottom="5.0" />
+                                          </VBox.margin>
+                                      </ChoiceBox>
+                                      <TextField fx:id="TeamNameTextField" promptText="Name">
+                                          <VBox.margin>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                                          </VBox.margin>
+                                      </TextField>
+                                      <TextField fx:id="TeamLanguageCodeTextField" layoutX="15.0" layoutY="216.0" promptText="Language Code">
+                                          <VBox.margin>
+                                              <Insets bottom="5.0" left="5.0" right="5.0" />
+                                          </VBox.margin>
+                                      </TextField>
+                                      <Label fx:id="TeamErrorText" textFill="RED" />
+                                      <Button fx:id="TeamCreateButton" mnemonicParsing="false" onAction="#TeamCreateButton" text="Create" />
+                                  </children>
+                              </VBox>
+                          </children>
+                      </AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Player">

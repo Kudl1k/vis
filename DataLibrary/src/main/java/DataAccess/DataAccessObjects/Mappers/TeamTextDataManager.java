@@ -27,9 +27,9 @@ public class TeamTextDataManager extends IDataMapper<TeamDTO,String> {
         sb.append(GlobalConfig.separator);
         sb.append(data.getCountryCode());
         sb.append(GlobalConfig.separator);
-        sb.append(new CategoryTextDataMapper().ToData(data.getCategory()));
+        sb.append(data.getCategory().getName());
         sb.append(GlobalConfig.separator);
-        sb.append(new LeagueTextDataMapper().ToData(data.getLeague()));
+        sb.append(data.getLeague().getId());
 
         return sb.toString();
     }

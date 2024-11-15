@@ -32,6 +32,12 @@ public class LeagueTextDAO implements ILeagueDAO {
             return false;
         }
 
+        int leaguesCount = leagues.size();
+        System.out.println(leaguesCount);
+        int newId = leaguesCount > 0 ? leagues.get(leaguesCount - 1).getId() + 1 : 1;
+
+        league.setId(newId);
+
         leagues.add(league);
 
         TextConnectorUtils.saveToFile(leagueMapper.ToDataList(leagues), leagueFile);

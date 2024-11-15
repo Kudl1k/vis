@@ -2,8 +2,10 @@ package cz.kudladev.admin;
 
 import DomainModels.CategoryDomainModel;
 import DomainModels.LeagueDomainModel;
+import DomainModels.TeamDomainModel;
 import Services.CategoryService;
 import Services.LeagueService;
+import Services.TeamService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,24 +18,35 @@ public class AdminController implements Initializable {
 
     private CategoryService categoryService;
     private LeagueService leagueService;
+    private TeamService teamService;
 
     @FXML
     private ChoiceBox<String> LeagueCategoryCombobox;
-
     @FXML
     private TextField LeagueNameTextField;
-
     @FXML
     private TextField LeagueLanguageCodeTextField;
-
     @FXML
     private Label LeagueErrorText;
+
+    @FXML
+    private ChoiceBox<String> TeamCategoryCombobox;
+    @FXML
+    private ChoiceBox<String> TeamLeagueCombobox;
+    @FXML
+    private TextField TeamNameTextField;
+    @FXML
+    private TextField TeamLanguageCodeTextField;
+    @FXML
+    private Label TeamErrorText;
+
 
     private boolean clickedCreate = false;
 
     public AdminController() {
         this.categoryService = new CategoryService();
         this.leagueService = new LeagueService();
+        this.teamService = new TeamService();
     }
 
     @Override
@@ -43,9 +56,17 @@ public class AdminController implements Initializable {
         for (CategoryDomainModel category : categories) {
             LeagueCategoryCombobox.getItems().add(category.getName());
         }
-        LeagueCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> resetError());
-        LeagueNameTextField.textProperty().addListener((observable, oldValue, newValue) -> resetError());
-        LeagueLanguageCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> resetError());
+        LeagueCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> resetLeagueError());
+        LeagueNameTextField.textProperty().addListener((observable, oldValue, newValue) -> resetLeagueError());
+        LeagueLanguageCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> resetLeagueError());
+
+        for (CategoryDomainModel category : categories) {
+            TeamCategoryCombobox.getItems().add(category.getName());
+        }
+        TeamCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            resetTeamError();
+            fillTeamLeagueCombobox(TeamCategoryCombobox.getValue());
+        });
     }
 
     @FXML
@@ -68,11 +89,53 @@ public class AdminController implements Initializable {
 
     }
 
-    private void resetError() {
+    private void resetLeagueError() {
         if (clickedCreate) {
             LeagueErrorText.setText("");
             LeagueErrorText.setStyle("-fx-text-fill: red");
             clickedCreate = false;
+        }
+    }
+
+    @FXML
+    public void TeamCreateButton(){
+        String name = TeamNameTextField.getText();
+        String languageCode = TeamLanguageCodeTextField.getText();
+        String category = TeamCategoryCombobox.getValue();
+        String league = TeamLeagueCombobox.getValue();
+        clickedCreate = true;
+        if(name.isEmpty() || languageCode.isEmpty() || category.isEmpty() || league.isEmpty()){
+            TeamErrorText.setText("Please fill all fields");
+            return;
+        }
+        TeamDomainModel team = new TeamDomainModel(
+            name,
+            languageCode,
+            new LeagueDomainModel(league, "", ""),
+            new CategoryDomainModel(category)
+        );
+        if(teamService.CreateTeam(team)){
+            //change text to green
+            TeamErrorText.setText("Team created");
+            TeamErrorText.setStyle("-fx-text-fill: #09c909");
+        } else {
+            TeamErrorText.setText("Error creating team");
+        }
+    }
+
+    private void resetTeamError() {
+        if (clickedCreate) {
+            TeamErrorText.setText("");
+            TeamErrorText.setStyle("-fx-text-fill: red");
+            clickedCreate = false;
+        }
+    }
+
+    private void fillTeamLeagueCombobox(String category) {
+        LeagueDomainModel[] leagues = leagueService.GetLeagues(category);
+        TeamLeagueCombobox.getItems().clear();
+        for (LeagueDomainModel league : leagues) {
+            TeamLeagueCombobox.getItems().add(league.getName());
         }
     }
 

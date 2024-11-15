@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class LeagueDTO {
     private int id;
     private String name;
@@ -20,6 +21,8 @@ public class LeagueDTO {
         this.countryCode = countryCode;
         this.categoryDTO = categoryDTO;
     }
+
+
 
     public void loadCategoryDTO() {
         if (categoryDTO != null) {

@@ -4,32 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Working log in and log out">
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/CategoryTextDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/LeagueTextDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueTeam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/CategoryDomainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/LeagueDomainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/CategoryDomainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/LeagueDomainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/CategoryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/LeagueService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/Football.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" afterDir="false" />
+    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Leagues working ig">
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/TeamTextDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/TeamDomainModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/TeamDomainMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/TeamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/CategoryTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/CategoryTextDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/LeagueTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/LeagueTextDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ITeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ITeamDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/TeamTextDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/TeamTextDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/LeagueTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/LeagueTextDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Leagues.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Leagues.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/LiteSportApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/LiteSportApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +134,7 @@
       <updated>1730375338226</updated>
       <workItem from="1730375339163" duration="1224000" />
       <workItem from="1731619579977" duration="1073000" />
-      <workItem from="1731660329040" duration="26237000" />
+      <workItem from="1731660329040" duration="32724000" />
     </task>
     <task id="LOCAL-00001" summary="Create user and Login works">
       <option name="closed" value="true" />
@@ -163,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731673058972</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Leagues working ig">
+      <option name="closed" value="true" />
+      <created>1731690063237</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1731690063237</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +169,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create user and Login works" />
     <MESSAGE value="Working log in and log out" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working log in and log out" />
+    <MESSAGE value="Leagues working ig" />
+    <option name="LAST_COMMIT_MESSAGE" value="Leagues working ig" />
   </component>
 </project>

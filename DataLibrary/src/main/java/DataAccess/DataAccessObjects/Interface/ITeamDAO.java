@@ -1,11 +1,9 @@
 package DataAccess.DataAccessObjects.Interface;
 
-import DataTransferObjects.MatchDTO;
-import DataTransferObjects.PlayerDTO;
-import DataTransferObjects.TeamDTO;
+import DataTransferObjects.*;
 
 public interface ITeamDAO {
-    boolean CreateTeam(String name);
+    boolean CreateTeam(TeamDTO team);
     TeamDTO GetTeam(int id);
     boolean addPlayer(int teamID, int playerID);
     boolean removePlayer(int teamID, int playerID);
