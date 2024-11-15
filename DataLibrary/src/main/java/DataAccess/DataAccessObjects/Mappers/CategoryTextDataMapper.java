@@ -9,7 +9,7 @@ public class CategoryTextDataMapper extends IDataMapper<CategoryDTO,String> {
         String[] cols = data.split(GlobalConfig.separator);
 
         return new CategoryDTO(
-                cols[1]
+                cols[0]
         );
     }
 

@@ -3,7 +3,6 @@ package DataAccess.DataAccessObjects.Sql;
 import DataAccess.Connectors.GlobalConfig;
 import DataAccess.DataAccessObjects.Interface.ILeagueDAO;
 import DataTransferObjects.LeagueDTO;
-import DataTransferObjects.TeamDTO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -48,14 +47,15 @@ public class LeagueSqlDAO implements ILeagueDAO {
     }
 
     @Override
-    public LeagueDTO[] GetLeaguesByCountry(String countryCode) {
+    public LeagueDTO[] GetLeaguesByCategory(String category) {
         return new LeagueDTO[0];
     }
 
     @Override
-    public TeamDTO[] GetTeams(LeagueDTO league) {
-        return new TeamDTO[0];
+    public LeagueDTO[] GetLeaguesByCountry(String countryCode) {
+        return new LeagueDTO[0];
     }
+
 
     @Override
     public boolean AddTeam(LeagueDTO league, int teamID) {

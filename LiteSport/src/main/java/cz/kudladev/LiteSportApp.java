@@ -17,7 +17,7 @@ public class LiteSportApp extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         LiteSportApp.stage = stage;
-        scene = new Scene(loadFXML("LiteSport"), 600, 400);
+        scene = new Scene(loadFXML("LiteSport"), 800, 400);
         stage.setTitle("LiteSport");
         stage.setScene(scene);
         stage.show();

@@ -12,6 +12,7 @@ public class LiteSportAppState {
     private static LiteSportAppState instance = new LiteSportAppState();
     private BooleanProperty isUserLoggedIn = new SimpleBooleanProperty(false);
     private UserDomainModel loggedInUser = null;
+    private String footballSelectedCategory = "";
 
     private LiteSportAppState() {
         // private constructor to prevent instantiation

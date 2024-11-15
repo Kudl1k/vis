@@ -1,6 +1,8 @@
 package DataAccess.Connectors;
 
 import DataAccess.DataAccessObjects.Interface.*;
+import DataAccess.DataAccessObjects.Text.CategoryTextDAO;
+import DataAccess.DataAccessObjects.Text.LeagueTextDAO;
 import DataAccess.DataAccessObjects.Text.UserTextDAO;
 
 public class TextConnector implements IDataConnection {
@@ -16,12 +18,14 @@ public class TextConnector implements IDataConnection {
 
     public TextConnector() {
         this.userDao = new UserTextDAO();
+        this.categoryDao = new CategoryTextDAO();
+        this.leagueDao = new LeagueTextDAO();
     }
 
 
     @Override
     public ICategoryDAO getCategoryDao() {
-        return null;
+        return categoryDao;
     }
 
     @Override
@@ -36,7 +40,7 @@ public class TextConnector implements IDataConnection {
 
     @Override
     public ILeagueDAO getLeagueDao() {
-        return null;
+        return leagueDao;
     }
 
     @Override

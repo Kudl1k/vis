@@ -34,14 +34,14 @@ public class UserTextDAO implements IUserDAO {
         String formattedTimestamp = LocalDateTime.now().format(formatter);
 
         UserDTO user = new UserDTO(
-            newId,
-            name,
-            surname,
-            email,
-            password,
-            role,
-            formattedTimestamp,
-            formattedTimestamp
+                newId,
+                name,
+                surname,
+                email,
+                password,
+                role,
+                formattedTimestamp,
+                formattedTimestamp
         );
 
         users.add(user);

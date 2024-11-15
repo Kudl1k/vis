@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.kudladev.admin.AdminController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="League">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label text="Create League">
+                                       <font>
+                                          <Font size="35.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="LeagueCategoryCombobox" prefWidth="150.0">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                    </ChoiceBox>
+                                    <TextField fx:id="LeagueNameTextField" promptText="Name">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <TextField fx:id="LeagueLanguageCodeTextField" layoutX="15.0" layoutY="216.0" promptText="Language Code">
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" />
+                                       </VBox.margin>
+                                    </TextField>
+                                    <Label fx:id="LeagueErrorText" textFill="RED" />
+                                    <Button fx:id="LeagueCreateButton" mnemonicParsing="false" onAction="#LeagueCreateButton" text="Create" />
+                                 </children>
+                              </VBox>
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Team">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                  <Tab text="Player">
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      </content>
+                  </Tab>
+                  <Tab text="Transfer">
+                      <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

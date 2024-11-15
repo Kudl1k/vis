@@ -4,10 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Create user and Login works">
+    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Working log in and log out">
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/CategoryTextDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/LeagueTextDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueTeam.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/CategoryDomainModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/LeagueDomainModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/CategoryDomainMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/LeagueDomainMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/LeagueService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/Football.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/CategoryTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/CategoryTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/LeagueTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/LeagueTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/LiteSportApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/LiteSportApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +47,7 @@
       <list>
         <option value="module-info" />
         <option value="FxmlFile" />
+        <option value="Kotlin Class" />
         <option value="Class" />
       </list>
     </option>
@@ -65,10 +88,12 @@
     "Maven.DomainLayer [compile].executor": "Run",
     "Maven.DomainLayer [install].executor": "Run",
     "Maven.DomainLayer [validate].executor": "Run",
+    "Maven.DomainLayer [verify].executor": "Run",
     "Maven.LiteSport [clean].executor": "Run",
     "Maven.LiteSport [compile].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -120,7 +145,7 @@
       <updated>1730375338226</updated>
       <workItem from="1730375339163" duration="1224000" />
       <workItem from="1731619579977" duration="1073000" />
-      <workItem from="1731660329040" duration="12303000" />
+      <workItem from="1731660329040" duration="26237000" />
     </task>
     <task id="LOCAL-00001" summary="Create user and Login works">
       <option name="closed" value="true" />
@@ -130,7 +155,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731672330674</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Working log in and log out">
+      <option name="closed" value="true" />
+      <created>1731673058972</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1731673058972</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,6 +171,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Create user and Login works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Create user and Login works" />
+    <MESSAGE value="Working log in and log out" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working log in and log out" />
   </component>
 </project>
