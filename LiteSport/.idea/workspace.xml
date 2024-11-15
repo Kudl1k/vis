@@ -5,61 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Create user and Login works">
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/CategorySqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/GoalHistorySqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/UserDomainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/IDomainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/UserDomainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/LiteSportApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/auth/login/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/auth/register/RegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Login.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Register.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/GlobalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/GlobalConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ICategoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ICategoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/UserTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/UserTextDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/src/main/java/com/example/backend/BackendApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../example-project/backend/src/test/java/com/example/backend/BackendApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,8 +120,17 @@
       <updated>1730375338226</updated>
       <workItem from="1730375339163" duration="1224000" />
       <workItem from="1731619579977" duration="1073000" />
-      <workItem from="1731660329040" duration="11607000" />
+      <workItem from="1731660329040" duration="12303000" />
     </task>
+    <task id="LOCAL-00001" summary="Create user and Login works">
+      <option name="closed" value="true" />
+      <created>1731672330674</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1731672330674</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
