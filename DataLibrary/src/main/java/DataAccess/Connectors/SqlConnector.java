@@ -1,6 +1,10 @@
 package DataAccess.Connectors;
 
 import DataAccess.DataAccessObjects.Interface.*;
+import DataAccess.DataAccessObjects.Sql.CategorySqlDAO;
+import DataAccess.DataAccessObjects.Sql.GoalHistorySqlDAO;
+import DataAccess.DataAccessObjects.Sql.LeagueSqlDAO;
+import DataAccess.DataAccessObjects.Sql.UserSqlDAO;
 
 public class SqlConnector implements IDataConnection{
     private ICategoryDAO categoryDao;
@@ -15,21 +19,21 @@ public class SqlConnector implements IDataConnection{
 
     public SqlConnector()
     {
-//        this.categoryDao = new CategorySqlDAO();
+        this.categoryDao = new CategorySqlDAO();
 //        this.favouriteDao = new FavouriteSqlDAO();
-//        this.goalHistoryDao = new GoalHistorySqlDAO();
-//        this.leagueDao = new LeagueSqlDAO();
+        this.goalHistoryDao = new GoalHistorySqlDAO();
+        this.leagueDao = new LeagueSqlDAO();
 //        this.matchDao = new MatchSqlDAO();
 //        this.playerHistoryDao = new PlayerHistorySqlDAO();
 //        this.playerDao = new PlayerSqlDAO();
 //        this.teamDao = new TeamSqlDAO();
-//        this.userDao = new UserSqlDAO();
+        this.userDao = new UserSqlDAO();
     }
 
 
     @Override
     public ICategoryDAO getCategoryDao() {
-        return null;
+        return this.categoryDao;
     }
 
     @Override
@@ -39,12 +43,12 @@ public class SqlConnector implements IDataConnection{
 
     @Override
     public IGoalHistoryDAO getGoalHistoryDao() {
-        return null;
+        return this.goalHistoryDao;
     }
 
     @Override
     public ILeagueDAO getLeagueDao() {
-        return null;
+        return this.leagueDao;
     }
 
     @Override
@@ -69,6 +73,6 @@ public class SqlConnector implements IDataConnection{
 
     @Override
     public IUserDAO getUserDao() {
-        return null;
+        return this.userDao;
     }
 }

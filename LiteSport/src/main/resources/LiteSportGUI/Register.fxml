@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.kudladev.auth.register.RegisterController">
+    <children>
+        <BorderPane layoutX="174.0" layoutY="85.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <center>
+                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label text="Register">
+                            <font>
+                                <Font name="System Bold" size="35.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="NameRegisterTextField" promptText="Name">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="SurnameRegisterTextField" promptText="Surname">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="EmailRegisterTextField" promptText="Email">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="PasswordRegisterTextField" promptText="Password">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                        <TextField fx:id="PasswordConfirmRegisterTextField" promptText="Password">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                            </VBox.margin>
+                        </TextField>
+                  <CheckBox fx:id="AdminCheckbox" mnemonicParsing="false" text="Admin" />
+                        <Label fx:id="ErrorMessageLabel" textFill="RED" />
+                        <Button fx:id="RegisterButton" mnemonicParsing="false" onAction="#onRegisterButtonClicked" text="Register" />
+                    </children>
+                </VBox>
+            </center></BorderPane>
+    </children>
+</AnchorPane>

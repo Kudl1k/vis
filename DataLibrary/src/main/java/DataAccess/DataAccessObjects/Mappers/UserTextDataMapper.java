@@ -14,7 +14,9 @@ public class UserTextDataMapper extends IDataMapper<UserDTO,String> {
                 cols[2],
                 cols[3],
                 cols[4],
-                cols[5]
+                cols[5],
+                cols[6],
+                cols[7]
         );
     }
 
@@ -32,6 +34,10 @@ public class UserTextDataMapper extends IDataMapper<UserDTO,String> {
         sb.append(data.getPassword());
         sb.append(GlobalConfig.separator);
         sb.append(data.getRole());
+        sb.append(GlobalConfig.separator);
+        sb.append(data.getLast_log());
+        sb.append(GlobalConfig.separator);
+        sb.append(data.getCreated_at());
 
         return sb.toString();
     }

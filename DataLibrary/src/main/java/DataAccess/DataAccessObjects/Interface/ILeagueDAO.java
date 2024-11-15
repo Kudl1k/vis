@@ -4,10 +4,10 @@ import DataTransferObjects.LeagueDTO;
 import DataTransferObjects.TeamDTO;
 
 public interface ILeagueDAO {
-    boolean CreateLeague(String name);
+    boolean CreateLeague(LeagueDTO league);
     LeagueDTO[] GetLeagues();
-    LeagueDTO GetLeague(int id);
-    TeamDTO[] GetTeams(int leagueID);
-    boolean AddTeam(int leagueID, int teamID);
-    boolean RemoveTeam(int leagueID, int teamID);
+    LeagueDTO[] GetLeaguesByCountry(String countryCode);
+    TeamDTO[] GetTeams(LeagueDTO league);
+    boolean AddTeam(LeagueDTO league, int teamID);
+    boolean RemoveTeam(LeagueDTO league, int teamID);
 }

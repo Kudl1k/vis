@@ -3,7 +3,7 @@ package DataAccess.DataAccessObjects.Interface;
 import DataTransferObjects.CategoryDTO;
 
 public interface ICategoryDAO {
-    boolean CreateCategory(String name);
+    boolean CreateCategory(CategoryDTO category);
     CategoryDTO[] GetCategories();
-    CategoryDTO GetCategory(int id);
+    CategoryDTO GetCategory(String name);
 }

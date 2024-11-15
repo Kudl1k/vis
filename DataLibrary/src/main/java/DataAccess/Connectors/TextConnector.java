@@ -1,6 +1,7 @@
 package DataAccess.Connectors;
 
 import DataAccess.DataAccessObjects.Interface.*;
+import DataAccess.DataAccessObjects.Text.UserTextDAO;
 
 public class TextConnector implements IDataConnection {
     private ICategoryDAO categoryDao;
@@ -14,7 +15,7 @@ public class TextConnector implements IDataConnection {
     private IUserDAO userDao;
 
     public TextConnector() {
-
+        this.userDao = new UserTextDAO();
     }
 
 
@@ -60,6 +61,6 @@ public class TextConnector implements IDataConnection {
 
     @Override
     public IUserDAO getUserDao() {
-        return null;
+        return userDao;
     }
 }
