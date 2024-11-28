@@ -23,6 +23,7 @@ public class AdminController implements Initializable {
     private TeamService teamService;
     private MatchService matchService;
     private PlayerService playerService;
+    private PlayerHistoryService playerHistoryService;
 
     //FXML elements
 
@@ -78,13 +79,25 @@ public class AdminController implements Initializable {
     @FXML
     private ChoiceBox<CategoryDomainModel> PlayerCategoryCombobox;
     @FXML
-    private ChoiceBox<LeagueDomainModel> PlayerLeagueCombobox;
-    @FXML
-    private ChoiceBox<TeamDomainModel> PlayerTeamCombobox;
-    @FXML
     private Label PlayerErrorText;
     @FXML
     private Button PlayerCreateButton;
+
+    //Transfer
+    @FXML
+    private ChoiceBox<PlayerDomainModel> TransferPlayerCombobox;
+    @FXML
+    private ChoiceBox<TeamDomainModel> TransferFromTeamCombobox;
+    @FXML
+    private ChoiceBox<TeamDomainModel> TransferToTeamCombobox;
+    @FXML
+    private DatePicker TransferStartDatePicker;
+    @FXML
+    private DatePicker TransferEndDatePicker;
+    @FXML
+    private Label TransferErrorText;
+    @FXML
+    private Button TransferCreateButton;
 
 
 
@@ -96,17 +109,23 @@ public class AdminController implements Initializable {
         this.teamService = new TeamService();
         this.matchService = new MatchService();
         this.playerService = new PlayerService();
+        this.playerHistoryService = new PlayerHistoryService();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         CategoryDomainModel[] categories = categoryService.GetCategories();
         ObservableList<CategoryDomainModel> categoryList = FXCollections.observableArrayList(categories);
+        PlayerDomainModel[] players = playerService.GetPlayers();
+        ObservableList<PlayerDomainModel> playerList = FXCollections.observableArrayList(players);
+
 
         LeagueCategoryCombobox.setItems(categoryList);
         TeamCategoryCombobox.setItems(categoryList);
         MatchCategoryCombobox.setItems(categoryList);
         PlayerCategoryCombobox.setItems(categoryList);
+
+        TransferPlayerCombobox.setItems(playerList);
 
         LeagueCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> resetLeagueError());
         LeagueNameTextField.textProperty().addListener((observable, oldValue, newValue) -> resetLeagueError());
@@ -125,14 +144,12 @@ public class AdminController implements Initializable {
             resetMatchError();
             fillMatchTeamsCombobox(MatchLeagueCombobox.getValue());
         });
-
-        PlayerCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> {
-            fillPlayerLeagueCombobox(PlayerCategoryCombobox.getValue());
+        TransferPlayerCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            CheckPlayerHistory();
         });
-        PlayerLeagueCombobox.addEventHandler(ActionEvent.ACTION, event -> {
-            fillPlayerTeamsCombobox(PlayerLeagueCombobox.getValue());
+        TransferFromTeamCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            fillTransferToTeamCombobox(TransferFromTeamCombobox.getValue());
         });
-
     }
 
     @FXML
@@ -220,7 +237,7 @@ public class AdminController implements Initializable {
             awayTeam,
             0,
             0,
-            DataParser.parseAndFormatDate(dateTime),
+            DataParser.parseAndFormatDateAndTime(dateTime),
             "",
             0,
             stadium,
@@ -263,17 +280,16 @@ public class AdminController implements Initializable {
         String surname = PlayerSurnameTextField.getText();
         String birthDate = PlayerBirthDatePicker.getValue().toString();
         CategoryDomainModel category = PlayerCategoryCombobox.getValue();
-        LeagueDomainModel league = PlayerLeagueCombobox.getValue();
-        TeamDomainModel team = PlayerTeamCombobox.getValue();
         clickedCreate = true;
-        if (name.isEmpty() || surname.isEmpty() || birthDate.isEmpty() || category == null || league == null || team == null) {
+        if (name.isEmpty() || surname.isEmpty() || birthDate.isEmpty() || category == null) {
             PlayerErrorText.setText("Please fill all fields");
             return;
         }
         PlayerDomainModel player = new PlayerDomainModel(
             name,
             surname,
-            birthDate
+            birthDate,
+            category
         );
         if (playerService.CreatePlayer(player)) {
             PlayerErrorText.setText("Player created");
@@ -283,17 +299,54 @@ public class AdminController implements Initializable {
         }
     }
 
-    private void fillPlayerLeagueCombobox(CategoryDomainModel category) {
-        LeagueDomainModel[] leagues = leagueService.GetLeagues(category);
-        ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(leagues);
-        PlayerLeagueCombobox.setItems(leagueList);
-        PlayerTeamCombobox.setItems(FXCollections.observableArrayList());
+    @FXML
+    private void TransferCreateButton() {
+        PlayerDomainModel player = TransferPlayerCombobox.getValue();
+        TeamDomainModel team = TransferToTeamCombobox.getValue();
+        String startDate = TransferStartDatePicker.getValue().toString();
+        String endDate = TransferEndDatePicker.getValue().toString();
+        clickedCreate = true;
+        if (player == null || team == null || startDate.isEmpty()) {
+            TransferErrorText.setText("Please fill all fields");
+            return;
+        }
+        PlayerHistoryDomainModel transfer = new PlayerHistoryDomainModel(
+            startDate,
+            endDate,
+            player,
+            team
+        );
+        if (playerHistoryService.CreatePlayerHistory(transfer)) {
+            TransferErrorText.setText("Transfer created");
+            TransferErrorText.setStyle("-fx-text-fill: #09c909");
+        } else {
+            TransferErrorText.setText("Error creating transfer");
+        }
     }
 
-    private void fillPlayerTeamsCombobox(LeagueDomainModel league) {
-        TeamDomainModel[] teams = teamService.GetTeamsByLeague(league);
+    @FXML
+    private void CheckPlayerHistory(){
+        PlayerHistoryDomainModel[] playerHistory = playerHistoryService.GetPlayerHistory(TransferPlayerCombobox.getValue());
+
+        if(playerHistory.length == 0){
+            TeamDomainModel[] teams = teamService.GetTeamsByCategory(TransferPlayerCombobox.getValue().getCategory());
+            ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teams);
+            TransferFromTeamCombobox.setItems(teamList);
+        } else {
+            TeamDomainModel[] teams = new TeamDomainModel[1];
+            teams[0] = playerHistory[playerHistory.length - 1].getTeam();
+            ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teams);
+            TransferFromTeamCombobox.setItems(teamList);
+            TransferFromTeamCombobox.setValue(teams[0]);
+            fillTransferToTeamCombobox(teams[0]);
+        }
+    }
+
+    private void fillTransferToTeamCombobox(TeamDomainModel team) {
+        TeamDomainModel[] teams = teamService.GetTeamsByCategory(TransferPlayerCombobox.getValue().getCategory());
+        teams = Arrays.stream(teams).filter(t -> t.getId() != team.getId()).toArray(TeamDomainModel[]::new);
         ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teams);
-        PlayerTeamCombobox.setItems(teamList);
+        TransferToTeamCombobox.setItems(teamList);
     }
 
 }

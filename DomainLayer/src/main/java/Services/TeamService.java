@@ -1,9 +1,12 @@
 package Services;
 
 import DataAccess.Connectors.GlobalConfig;
+import DataAccess.DataAccessObjects.Mappers.CategoryTextDataMapper;
 import DataTransferObjects.TeamDTO;
+import DomainModels.CategoryDomainModel;
 import DomainModels.LeagueDomainModel;
 import DomainModels.TeamDomainModel;
+import Mappers.CategoryDomainMapper;
 import Mappers.TeamDomainMapper;
 
 public class TeamService {
@@ -27,6 +30,18 @@ public class TeamService {
                 .connection
                 .getTeamDao()
                 .GetTeamsByLeague(league.getId());
+        TeamDomainModel[] models = new TeamDomainModel[teams.length];
+        for (int i = 0; i < teams.length; i++) {
+            models[i] = mapper.ToDomain(teams[i]);
+        }
+        return models;
+    }
+
+    public TeamDomainModel[] GetTeamsByCategory(CategoryDomainModel category) {
+        TeamDTO[] teams = GlobalConfig
+                .connection
+                .getTeamDao()
+                .GetTeamsByCategory(new CategoryDomainMapper().ToDTO(category));
         TeamDomainModel[] models = new TeamDomainModel[teams.length];
         for (int i = 0; i < teams.length; i++) {
             models[i] = mapper.ToDomain(teams[i]);

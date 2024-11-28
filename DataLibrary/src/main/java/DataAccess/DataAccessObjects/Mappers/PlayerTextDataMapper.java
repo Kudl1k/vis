@@ -13,7 +13,8 @@ public class PlayerTextDataMapper extends IDataMapper<PlayerDTO,String> {
             Integer.parseInt(cols[0]),
             cols[1],
             cols[2],
-            cols[3]
+            cols[3],
+            GlobalConfig.connection.getCategoryDao().GetCategory(cols[4])
         );
     }
 
@@ -27,6 +28,8 @@ public class PlayerTextDataMapper extends IDataMapper<PlayerDTO,String> {
         sb.append(data.getSurname());
         sb.append(GlobalConfig.separator);
         sb.append(data.getBirthDate());
+        sb.append(GlobalConfig.separator);
+        sb.append(data.getCategory().getName());
 
         return sb.toString();
     }

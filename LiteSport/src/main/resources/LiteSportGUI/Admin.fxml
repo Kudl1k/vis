@@ -174,18 +174,6 @@
                                                 <Insets bottom="5.0" />
                                             </VBox.margin>
                                         </ChoiceBox>
-                                        <Label text="League" />
-                                        <ChoiceBox fx:id="PlayerLeagueCombobox" prefWidth="150.0">
-                                            <VBox.margin>
-                                                <Insets bottom="5.0" />
-                                            </VBox.margin>
-                                        </ChoiceBox>
-                                        <Label text="Team" />
-                                        <ChoiceBox fx:id="PlayerTeamCombobox" prefWidth="150.0">
-                                            <VBox.margin>
-                                                <Insets bottom="5.0" />
-                                            </VBox.margin>
-                                        </ChoiceBox>
                                         <Label fx:id="PlayerErrorText" textFill="RED" />
                                         <Button fx:id="PlayerCreateButton" mnemonicParsing="false" onAction="#PlayerCreateButton" text="Create" />
                                   </children>
@@ -195,7 +183,49 @@
                   </Tab>
                   <Tab text="Transfer">
                       <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" >
+                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label text="Create Transfer">
+                                            <font>
+                                                <Font size="35.0" />
+                                            </font>
+                                        </Label>
+                                        <Label text="Player" />
+                                        <ChoiceBox fx:id="TransferPlayerCombobox" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ChoiceBox>
+                                        <Label text="From Team" />
+                                        <ChoiceBox fx:id="TransferFromTeamCombobox" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ChoiceBox>
+                                        <Label text="To Team" />
+                                        <ChoiceBox fx:id="TransferToTeamCombobox" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ChoiceBox>
+                                        <Label text="Transfer Start Date" />
+                                        <DatePicker fx:id="TransferStartDatePicker" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </DatePicker>
+                                        <Label text="Transfer End Date" />
+                                        <DatePicker fx:id="TransferEndDatePicker" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </DatePicker>
+                                        <Label fx:id="TransferErrorText" textFill="RED" />
+                                        <Button fx:id="TransferCreateButton" mnemonicParsing="false" onAction="#TransferCreateButton" text="Create" />
+                                    </children>
+                                </VBox>
+                          </AnchorPane>
                       </content>
                   </Tab>
               </tabs>

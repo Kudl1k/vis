@@ -50,6 +50,13 @@ public class PlayerTextDAO implements IPlayerDAO {
     }
 
     @Override
+    public PlayerDTO[] GetPlayers() {
+        Path path = TextConnectorUtils.fullFilePath(playerFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        return playerMapper.ToDTOList(lines).toArray(new PlayerDTO[0]);
+    }
+
+    @Override
     public boolean UpdatePlayer(PlayerDTO player) {
         return false;
     }

@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DataParser {
 
-    public static String parseAndFormatDate(String inputDate) {
+    public static String parseAndFormatDateAndTime(String inputDate) {
         String inputFormat = "EEE MMM dd HH:mm:ss zzz yyyy";
         String outputFormat = "yyyy-MM-dd HH:mm:ss";
 

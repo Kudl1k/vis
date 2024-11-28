@@ -15,4 +15,5 @@ public class PlayerDTO {
     private String name;
     private String surname;
     private String birthDate;
+    private CategoryDTO category;
 }

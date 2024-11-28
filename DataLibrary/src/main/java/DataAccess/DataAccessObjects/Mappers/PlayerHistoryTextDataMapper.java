@@ -11,8 +11,8 @@ public class PlayerHistoryTextDataMapper extends IDataMapper<PlayerHistoryDTO,St
         return new PlayerHistoryDTO(
             cols[0],
             cols[1],
-            new PlayerTextDataMapper().ToDTO(cols[2]),
-            new TeamTextDataMapper().ToDTO(cols[3])
+            GlobalConfig.connection.getPlayerDao().GetPlayer(Integer.parseInt(cols[2])),
+            GlobalConfig.connection.getTeamDao().GetTeam(Integer.parseInt(cols[3]))
         );
     }
 
@@ -23,10 +23,9 @@ public class PlayerHistoryTextDataMapper extends IDataMapper<PlayerHistoryDTO,St
         sb.append(GlobalConfig.separator);
         sb.append(data.getEndDate());
         sb.append(GlobalConfig.separator);
-        sb.append(new PlayerTextDataMapper().ToData(data.getPlayer()));
+        sb.append(data.getPlayer().getId());
         sb.append(GlobalConfig.separator);
-        sb.append(new TeamTextDataMapper().ToData(data.getTeam()));
-
+        sb.append(data.getTeam().getId());
         return sb.toString();
     }
 }

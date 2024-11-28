@@ -23,6 +23,18 @@ public class PlayerService {
                 .CreatePlayer(mapper.ToDTO(model));
     }
 
+    public PlayerDomainModel[] GetPlayers() {
+        PlayerDTO[] players = GlobalConfig
+                .connection
+                .getPlayerDao()
+                .GetPlayers();
+        PlayerDomainModel[] playerDomainModels = new PlayerDomainModel[players.length];
+        for (int i = 0; i < players.length; i++) {
+            playerDomainModels[i] = mapper.ToDomain(players[i]);
+        }
+        return playerDomainModels;
+    }
+
     public PlayerDomainModel GetPlayer(int playerID) {
         return mapper.ToDomain(GlobalConfig
                 .connection

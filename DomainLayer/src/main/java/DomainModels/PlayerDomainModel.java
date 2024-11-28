@@ -13,12 +13,14 @@ public class PlayerDomainModel {
     private String name;
     private String surname;
     private String birthDate;
+    private CategoryDomainModel category;
 
-    public PlayerDomainModel(String name, String surname, String birthDate) {
+    public PlayerDomainModel(String name, String surname, String birthDate, CategoryDomainModel category) {
         this.id = -1;
         this.name = name;
         this.surname = surname;
         this.birthDate = birthDate;
+        this.category = category;
     }
 
     @Override

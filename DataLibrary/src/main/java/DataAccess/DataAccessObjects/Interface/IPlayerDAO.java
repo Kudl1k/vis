@@ -7,6 +7,7 @@ import DataTransferObjects.TeamDTO;
 public interface IPlayerDAO {
     PlayerDTO GetPlayer(int playerID);
     boolean CreatePlayer(PlayerDTO player);
+    PlayerDTO[] GetPlayers();
     boolean UpdatePlayer(PlayerDTO player);
     PlayerHistoryDTO[] GetPlayerHistory(int playerID);
     PlayerDTO[] GetPlayersByTeam(TeamDTO team);

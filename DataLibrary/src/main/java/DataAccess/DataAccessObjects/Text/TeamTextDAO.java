@@ -7,6 +7,7 @@ import DataTransferObjects.*;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TeamTextDAO implements ITeamDAO {
     public static String teamFile = "Team.csv";
@@ -57,22 +58,11 @@ public class TeamTextDAO implements ITeamDAO {
     }
 
     @Override
-    public boolean addPlayer(int teamID, int playerID) {
-        return false;
-    }
+    public TeamDTO[] GetTeamsByCategory(CategoryDTO category) {
+        Path path = TextConnectorUtils.fullFilePath(teamFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<TeamDTO> teams = teamManager.ToDTOList(lines);
 
-    @Override
-    public boolean removePlayer(int teamID, int playerID) {
-        return false;
-    }
-
-    @Override
-    public PlayerDTO[] getPlayers(int teamID) {
-        return new PlayerDTO[0];
-    }
-
-    @Override
-    public MatchDTO[] getMatches(int teamID) {
-        return new MatchDTO[0];
+        return teams.stream().filter(t -> Objects.equals(t.getCategory().getName(), category.getName())).toArray(TeamDTO[]::new);
     }
 }
