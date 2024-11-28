@@ -1,13 +1,7 @@
 package cz.kudladev.admin;
 
-import DomainModels.CategoryDomainModel;
-import DomainModels.LeagueDomainModel;
-import DomainModels.MatchDomainModel;
-import DomainModels.TeamDomainModel;
-import Services.CategoryService;
-import Services.LeagueService;
-import Services.MatchService;
-import Services.TeamService;
+import DomainModels.*;
+import Services.*;
 import com.browniebytes.javafx.control.DateTimePicker;
 import cz.kudladev.core.LiteSportAppState;
 import cz.kudladev.util.DataParser;
@@ -28,6 +22,7 @@ public class AdminController implements Initializable {
     private LeagueService leagueService;
     private TeamService teamService;
     private MatchService matchService;
+    private PlayerService playerService;
 
     //FXML elements
 
@@ -66,9 +61,32 @@ public class AdminController implements Initializable {
     @FXML
     private DateTimePicker MatchDateTimePicker;
     @FXML
+    private TextField MatchStadiumTextField;
+    @FXML
     private Label MatchErrorText;
     @FXML
     private Button MatchCreateButton;
+
+
+    //Player
+    @FXML
+    private TextField PlayerNameTextField;
+    @FXML
+    private TextField PlayerSurnameTextField;
+    @FXML
+    private DatePicker PlayerBirthDatePicker;
+    @FXML
+    private ChoiceBox<CategoryDomainModel> PlayerCategoryCombobox;
+    @FXML
+    private ChoiceBox<LeagueDomainModel> PlayerLeagueCombobox;
+    @FXML
+    private ChoiceBox<TeamDomainModel> PlayerTeamCombobox;
+    @FXML
+    private Label PlayerErrorText;
+    @FXML
+    private Button PlayerCreateButton;
+
+
 
     private boolean clickedCreate = false;
 
@@ -77,6 +95,7 @@ public class AdminController implements Initializable {
         this.leagueService = new LeagueService();
         this.teamService = new TeamService();
         this.matchService = new MatchService();
+        this.playerService = new PlayerService();
     }
 
     @Override
@@ -87,6 +106,7 @@ public class AdminController implements Initializable {
         LeagueCategoryCombobox.setItems(categoryList);
         TeamCategoryCombobox.setItems(categoryList);
         MatchCategoryCombobox.setItems(categoryList);
+        PlayerCategoryCombobox.setItems(categoryList);
 
         LeagueCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> resetLeagueError());
         LeagueNameTextField.textProperty().addListener((observable, oldValue, newValue) -> resetLeagueError());
@@ -105,6 +125,14 @@ public class AdminController implements Initializable {
             resetMatchError();
             fillMatchTeamsCombobox(MatchLeagueCombobox.getValue());
         });
+
+        PlayerCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            fillPlayerLeagueCombobox(PlayerCategoryCombobox.getValue());
+        });
+        PlayerLeagueCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            fillPlayerTeamsCombobox(PlayerLeagueCombobox.getValue());
+        });
+
     }
 
     @FXML
@@ -181,6 +209,7 @@ public class AdminController implements Initializable {
         TeamDomainModel homeTeam = MatchHomeTeamCombobox.getValue();
         TeamDomainModel awayTeam = MatchAwayTeamCombobox.getValue();
         String dateTime = MatchDateTimePicker.getTime().toString();
+        String stadium = MatchStadiumTextField.getText();
         clickedCreate = true;
         if (category == null || league == null || homeTeam == null || awayTeam == null || dateTime.isEmpty()) {
             MatchErrorText.setText("Please fill all fields");
@@ -194,7 +223,7 @@ public class AdminController implements Initializable {
             DataParser.parseAndFormatDate(dateTime),
             "",
             0,
-            "",
+            stadium,
             category,
             league,
             LiteSportAppState.getInstance().getLoggedInUser()
@@ -226,6 +255,45 @@ public class AdminController implements Initializable {
         ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teams);
         MatchHomeTeamCombobox.setItems(teamList);
         MatchAwayTeamCombobox.setItems(teamList);
+    }
+
+    @FXML
+    private void PlayerCreateButton() {
+        String name = PlayerNameTextField.getText();
+        String surname = PlayerSurnameTextField.getText();
+        String birthDate = PlayerBirthDatePicker.getValue().toString();
+        CategoryDomainModel category = PlayerCategoryCombobox.getValue();
+        LeagueDomainModel league = PlayerLeagueCombobox.getValue();
+        TeamDomainModel team = PlayerTeamCombobox.getValue();
+        clickedCreate = true;
+        if (name.isEmpty() || surname.isEmpty() || birthDate.isEmpty() || category == null || league == null || team == null) {
+            PlayerErrorText.setText("Please fill all fields");
+            return;
+        }
+        PlayerDomainModel player = new PlayerDomainModel(
+            name,
+            surname,
+            birthDate
+        );
+        if (playerService.CreatePlayer(player)) {
+            PlayerErrorText.setText("Player created");
+            PlayerErrorText.setStyle("-fx-text-fill: #09c909");
+        } else {
+            PlayerErrorText.setText("Error creating player");
+        }
+    }
+
+    private void fillPlayerLeagueCombobox(CategoryDomainModel category) {
+        LeagueDomainModel[] leagues = leagueService.GetLeagues(category);
+        ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(leagues);
+        PlayerLeagueCombobox.setItems(leagueList);
+        PlayerTeamCombobox.setItems(FXCollections.observableArrayList());
+    }
+
+    private void fillPlayerTeamsCombobox(LeagueDomainModel league) {
+        TeamDomainModel[] teams = teamService.GetTeamsByLeague(league);
+        ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teams);
+        PlayerTeamCombobox.setItems(teamList);
     }
 
 }

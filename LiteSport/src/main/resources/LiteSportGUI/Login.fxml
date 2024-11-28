@@ -26,6 +26,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </VBox.margin>
                   </TextField>
+                  <CheckBox fx:id="RememberMeCheckBox" mnemonicParsing="false" text="Remember me" />
                   <Label fx:id="ErrorMessageLabel" textFill="RED" />
                   <Button fx:id="LoginButton" mnemonicParsing="false" onAction="#onLoginClicked" text="Login" />
                </children>

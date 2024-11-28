@@ -6,6 +6,7 @@ import cz.kudladev.core.LiteSportAppState;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -19,13 +20,12 @@ public class LoginController implements Initializable {
 
     @FXML
     private TextField UsernameLoginTextField;
-
     @FXML
     private TextField PasswordLoginTextField;
-
+    @FXML
+    private CheckBox RememberMeCheckBox;
     @FXML
     private Label ErrorMessageLabel;
-
     @FXML
     private Button LoginButton;
 
@@ -35,6 +35,9 @@ public class LoginController implements Initializable {
         System.out.println("LoginController initialized");
         UsernameLoginTextField.textProperty().addListener((observable, oldValue, newValue) -> resetError());
         PasswordLoginTextField.textProperty().addListener((observable, oldValue, newValue) -> resetError());
+        RememberMeCheckBox.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            LiteSportAppState.getInstance().setRememberMe(newValue);
+        });
     }
     private boolean clickedLogin = false;
 

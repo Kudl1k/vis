@@ -126,6 +126,12 @@
                                                   <Insets bottom="5.0" />
                                               </VBox.margin>
                                           </DateTimePicker>
+                                          <Label text="Stadium" />
+                                            <TextField fx:id="MatchStadiumTextField" promptText="Stadium">
+                                                <VBox.margin>
+                                                    <Insets bottom="5.0" left="5.0" right="5.0" />
+                                                </VBox.margin>
+                                            </TextField>
                                           <Label fx:id="MatchErrorText" textFill="RED" />
                                           <Button fx:id="MatchCreateButton" mnemonicParsing="false" onAction="#MatchCreateButton" text="Create" />
                                       </children>
@@ -136,7 +142,55 @@
                   </Tab>
                   <Tab text="Player">
                       <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                  <children>
+                                      <Label text="Create Player">
+                                          <font>
+                                              <Font size="35.0" />
+                                          </font>
+                                      </Label>
+                                        <Label text="Name" />
+                                        <TextField fx:id="PlayerNameTextField" promptText="Name">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                            </VBox.margin>
+                                        </TextField>
+                                        <Label text="Surname" />
+                                        <TextField fx:id="PlayerSurnameTextField" promptText="Surname">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" />
+                                            </VBox.margin>
+                                        </TextField>
+                                        <Label text="Birth Date" />
+                                        <DatePicker fx:id="PlayerBirthDatePicker" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </DatePicker>
+                                        <Label text="Category" />
+                                        <ChoiceBox fx:id="PlayerCategoryCombobox" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ChoiceBox>
+                                        <Label text="League" />
+                                        <ChoiceBox fx:id="PlayerLeagueCombobox" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ChoiceBox>
+                                        <Label text="Team" />
+                                        <ChoiceBox fx:id="PlayerTeamCombobox" prefWidth="150.0">
+                                            <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                            </VBox.margin>
+                                        </ChoiceBox>
+                                        <Label fx:id="PlayerErrorText" textFill="RED" />
+                                        <Button fx:id="PlayerCreateButton" mnemonicParsing="false" onAction="#PlayerCreateButton" text="Create" />
+                                  </children>
+                              </VBox>
+                          </AnchorPane>
                       </content>
                   </Tab>
                   <Tab text="Transfer">

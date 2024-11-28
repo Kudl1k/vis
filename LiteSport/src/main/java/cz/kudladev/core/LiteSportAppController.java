@@ -1,6 +1,7 @@
 package cz.kudladev.core;
 
 import DomainModels.LeagueDomainModel;
+import DomainModels.MatchDomainModel;
 import DomainModels.TeamDomainModel;
 import cz.kudladev.LiteSportApp;
 import javafx.collections.FXCollections;
@@ -8,8 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 
 import java.net.URL;
@@ -30,23 +33,25 @@ public class LiteSportAppController implements Initializable {
     //Table
 
     @FXML
-    private TableView footballView;
+    private TableView<MatchDomainModel> footballView;
     @FXML
-    private TableColumn footballID;
+    private TableColumn<MatchDomainModel, String> footballID;
     @FXML
-    private TableColumn footballLeague;
+    private TableColumn<MatchDomainModel, String> footballLeague;
     @FXML
-    private TableColumn footballStart;
+    private TableColumn<MatchDomainModel, String> footballStadium;
     @FXML
-    private TableColumn footballEnd;
+    private TableColumn<MatchDomainModel, String> footballStart;
     @FXML
-    private TableColumn footballHomeTeam;
+    private TableColumn<MatchDomainModel, String> footballEnd;
     @FXML
-    private TableColumn footballAwayTeam;
+    private TableColumn<MatchDomainModel, String> footballHomeTeam;
     @FXML
-    private TableColumn footballHomeScore;
+    private TableColumn<MatchDomainModel, String> footballAwayTeam;
     @FXML
-    private TableColumn footballAwayScore;
+    private TableColumn<MatchDomainModel, Integer> footballHomeScore;
+    @FXML
+    private TableColumn<MatchDomainModel, Integer> footballAwayScore;
 
 
 
@@ -63,19 +68,7 @@ public class LiteSportAppController implements Initializable {
         appState.getIsUserLoggedIn().addListener((observable, oldValue, newValue) -> {
             LiteSportHeader.getChildren().clear();
             if (newValue) {
-                System.out.println("User is logged in");
-                Button logoutButton = new Button("Logout");
-                logoutButton.setId("logoutButton");
-                logoutButton.setOnAction(e -> appState.setIsUserLoggedIn(false));
-                Label usernameLabel = new Label(appState.getLoggedInUser().getName() + " " + appState.getLoggedInUser().getSurname());
-                LiteSportHeader.getChildren().addAll(usernameLabel, logoutButton);
-                if (appState.getLoggedInUser().getRole().equals("admin")) {
-                    Button adminButton = new Button("Admin");
-                    adminButton.setId("adminButton");
-                    adminButton.setOnAction(e -> LiteSportApp.openWindow("Admin", 800, 600));
-                    LiteSportHeader.getChildren().add(adminButton);
-                }
-
+                LoggedButtonLayout();
             } else {
                 System.out.println("User is not logged in");
                 DefaultButtonLayout();
@@ -85,6 +78,8 @@ public class LiteSportAppController implements Initializable {
         if (!appState.getIsUserLoggedIn().getValue()) {
             LiteSportHeader.getChildren().clear();
             DefaultButtonLayout();
+        } else {
+            LoggedButtonLayout();
         }
 
         ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(football.getLeagues());
@@ -109,11 +104,27 @@ public class LiteSportAppController implements Initializable {
         LiteSportHeader.getChildren().addAll(loginButton, registerButton);
     }
 
+    private void LoggedButtonLayout(){
+        System.out.println("User is logged in");
+        Button logoutButton = new Button("Logout");
+        logoutButton.setId("logoutButton");
+        logoutButton.setOnAction(e -> LiteSportAppState.getInstance().logOutUser());
+        Label usernameLabel = new Label(LiteSportAppState.getInstance().getLoggedInUser().getName() + " " + LiteSportAppState.getInstance().getLoggedInUser().getSurname());
+        LiteSportHeader.getChildren().addAll(usernameLabel, logoutButton);
+        if (LiteSportAppState.getInstance().getLoggedInUser().getRole().equals("admin")) {
+            Button adminButton = new Button("Admin");
+            adminButton.setId("adminButton");
+            adminButton.setOnAction(e -> LiteSportApp.openWindow("Admin", 800, 600));
+            LiteSportHeader.getChildren().add(adminButton);
+        }
+    }
+
     private void initializeFootballTable(){
         footballID.setCellValueFactory(new PropertyValueFactory<>("id"));
         footballLeague.setCellValueFactory(new PropertyValueFactory<>("league"));
         footballStart.setCellValueFactory(new PropertyValueFactory<>("startTime"));
         footballEnd.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+        footballStadium.setCellValueFactory(new PropertyValueFactory<>("stadium"));
         footballHomeTeam.setCellValueFactory(new PropertyValueFactory<>("homeTeam"));
         footballAwayTeam.setCellValueFactory(new PropertyValueFactory<>("awayTeam"));
         footballHomeScore.setCellValueFactory(new PropertyValueFactory<>("homeScore"));
@@ -124,6 +135,19 @@ public class LiteSportAppController implements Initializable {
         FootballLeagueChoiceBox.addEventHandler(ActionEvent.ACTION, event -> {
             this.footballView.setItems(FXCollections.observableArrayList(football.LoadMatches(FootballLeagueChoiceBox.getValue())));
         });
+
+        this.footballView.setOnMouseClicked(this::handleRowClick);
+    }
+
+    private void handleRowClick(MouseEvent event) {
+        if (event.getClickCount() == 2) { // Double-click detected
+            System.out.println("Double-click detected");
+            MatchDomainModel selectedMatch = footballView.getSelectionModel().getSelectedItem();
+            if (selectedMatch != null) {
+                LiteSportAppState.getInstance().setSelectedMatch(selectedMatch);
+                LiteSportApp.openWindow("MatchInfo", 600, 400);
+            }
+        }
     }
 
 

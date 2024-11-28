@@ -1,0 +1,1 @@
+loggedInUser=1,Stepan,Kudlacek,kud0132@vsb.cz,kudla,admin,2024-11-28 18:59:43,2024-11-15 12:33:34

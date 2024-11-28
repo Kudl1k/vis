@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.kudladev.info.MatchInfoController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                           <children>
+                              <Label fx:id="homeTeam" alignment="CENTER" prefHeight="26.0" prefWidth="100.0" text="Home Team" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                 <padding>
+                                    <Insets top="50.0" />
+                                 </padding></Label>
+                              <Label fx:id="homeScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="143.0" text="0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="51.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="150.0">
+                            <children>
+                              <Label fx:id="stadium" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="150.0" text="Match Stadium" textAlignment="CENTER" />
+                               <Label fx:id="startTime" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" text="Start Time" textAlignment="CENTER" />
+                               <Label fx:id="endTime" alignment="CENTER" contentDisplay="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="150.0" text="" textAlignment="CENTER" />
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="118.0" prefWidth="150.0" text=":" textAlignment="CENTER">
+                                    <font>
+                                        <Font size="63.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                        <VBox layoutX="250.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="awayTeam" alignment="CENTER" prefHeight="26.0" prefWidth="100.0" text="Away Team" textAlignment="CENTER">
+                                 <padding>
+                                    <Insets top="50.0" />
+                                 </padding></Label>
+                              <Label fx:id="awayScore" alignment="CENTER" contentDisplay="CENTER" prefHeight="75.0" prefWidth="143.0" text="0" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="51.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                     <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
+                        <content>
+                           <AnchorPane minHeight="0.0" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                 <TableView fx:id="matchInfoView" prefHeight="299.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <columns>
+                                       <TableColumn fx:id="matchMinute" editable="false" maxWidth="105.0" minWidth="5.0" text="Minute" />
+                                       <TableColumn fx:id="matchTeam" editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Team" />
+                                       <TableColumn fx:id="matchPlayer" editable="false" maxWidth="250.0" minWidth="100.0" prefWidth="102.0" text="Player" />
+                                       <TableColumn fx:id="creator" editable="false" maxWidth="105.0" minWidth="5.0" text="Created by" />
+                                    </columns>
+                                 </TableView>
+                              </children>
+                           </AnchorPane>
+                        </content>
+                     </ScrollPane>
+                  </VBox>
+               </children>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

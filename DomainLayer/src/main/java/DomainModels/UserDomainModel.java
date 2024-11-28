@@ -27,6 +27,17 @@ public class UserDomainModel {
         this.created_at = System.currentTimeMillis() + "";
     }
 
+    public static UserDomainModel fromString(String part) {
+        String[] parts = part.split(",");
+        if (parts.length == 8) {
+            return new UserDomainModel(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], parts[7]);
+        }
+        return null;
+    }
+    public static String toSaveString(UserDomainModel user) {
+        return user.id + "," + user.name + "," + user.surname + "," + user.email + "," + user.password + "," + user.role + "," + user.last_log + "," + user.created_at;
+    }
+
 
     @Override
     public String toString(){
