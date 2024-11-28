@@ -18,7 +18,7 @@
                                           <HBox fx:id="SoccerHeader" alignment="CENTER_LEFT" prefHeight="31.0" prefWidth="600.0" BorderPane.alignment="CENTER">
                                        <children>
                                           <ChoiceBox fx:id="FootballLeagueChoiceBox" prefWidth="150.0" />
-                                          <ChoiceBox prefWidth="150.0" />
+                                          <ChoiceBox fx:id="FootballTeamChoiceBox" prefWidth="150.0" />
                                        </children>
                                           </HBox>
                                       </top>
@@ -27,17 +27,16 @@
                                               <content>
                                                   <AnchorPane minHeight="0.0" minWidth="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                       <children>
-                                                          <TableView prefHeight="299.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                          <TableView fx:id="footballView" prefHeight="299.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                               <columns>
-                                                                  <TableColumn editable="false" maxWidth="50.0" prefWidth="35.0" text="ID" />
-                                                                  <TableColumn editable="false" maxWidth="150.0" prefWidth="75.0" text="Sport" />
-                                                                  <TableColumn editable="false" maxWidth="200.0" prefWidth="100.0" text="League" />
-                                                                  <TableColumn editable="false" maxWidth="105.0" minWidth="50.0" prefWidth="100.0" text="Start Date" />
-                                                                  <TableColumn editable="false" maxWidth="100.0" minWidth="5.0" prefWidth="100.0" text="End Date" />
-                                                                  <TableColumn editable="false" maxWidth="250.0" minWidth="100.0" prefWidth="102.0" text="Home Team" />
-                                                                  <TableColumn editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Away Team" />
-                                                                  <TableColumn editable="false" maxWidth="105.0" minWidth="5.0" text="Home Score" />
-                                                                  <TableColumn editable="false" maxWidth="105.0" minWidth="5.0" text="Away Score" />
+                                                                  <TableColumn fx:id="footballID" editable="false" maxWidth="50.0" prefWidth="35.0" text="ID" />
+                                                                  <TableColumn fx:id="footballLeague" editable="false" maxWidth="200.0" prefWidth="100.0" text="League" />
+                                                                  <TableColumn fx:id="footballStart" editable="false" maxWidth="105.0" minWidth="50.0" prefWidth="100.0" text="Start Date" />
+                                                                  <TableColumn fx:id="footballEnd" editable="false" maxWidth="100.0" minWidth="5.0" prefWidth="100.0" text="End Date" />
+                                                                  <TableColumn fx:id="footballHomeTeam" editable="false" maxWidth="250.0" minWidth="100.0" prefWidth="102.0" text="Home Team" />
+                                                                  <TableColumn fx:id="footballAwayTeam" editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Away Team" />
+                                                                  <TableColumn fx:id="footballHomeScore" editable="false" maxWidth="105.0" minWidth="5.0" text="Home Score" />
+                                                                  <TableColumn fx:id="footballAwayScore" editable="false" maxWidth="105.0" minWidth="5.0" text="Away Score" />
                                                               </columns>
                                                           </TableView>
                                                       </children>
@@ -56,6 +55,11 @@
                   </content>
                 </Tab>
                 <Tab text="Ice Hockey">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                <Tab text="Search">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                   </content>

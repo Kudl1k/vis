@@ -8,6 +8,7 @@ public class LeagueDomainMapper extends IDomainMapper<LeagueDomainModel, LeagueD
     @Override
     public LeagueDomainModel ToDomain(LeagueDTO data) {
         LeagueDomainModel model = new LeagueDomainModel();
+        model.setId(data.getId());
         model.setName(data.getName());
         model.setCountryCode(data.getCountryCode());
         model.setCategoryDomainModel(new CategoryDomainMapper().ToDomain(data.getCategoryDTO()));
@@ -18,6 +19,7 @@ public class LeagueDomainMapper extends IDomainMapper<LeagueDomainModel, LeagueD
     public LeagueDTO ToDTO(LeagueDomainModel data) {
         CategoryDTO categoryDTO = data.getCategory() != null ? new CategoryDTO(data.getCategory().getName()) : null;
         return new LeagueDTO(
+                data.getId(),
                 data.getName(),
                 data.getCountryCode(),
                 categoryDTO

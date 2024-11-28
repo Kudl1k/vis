@@ -27,4 +27,10 @@ public class UserDomainModel {
         this.created_at = System.currentTimeMillis() + "";
     }
 
+
+    @Override
+    public String toString(){
+        return name + " " + surname + " (" + email + ")";
+    }
+
 }

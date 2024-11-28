@@ -5,6 +5,7 @@ module cz.kudladev.LiteSport {
     requires DomainLayer;
     requires DataLibrary;
     requires static lombok;
+    requires datetime.picker.javafx;
 
     opens cz.kudladev to javafx.fxml;
     opens cz.kudladev.core to javafx.fxml;

@@ -12,7 +12,7 @@ public class PlayerHistoryTextDataMapper extends IDataMapper<PlayerHistoryDTO,St
             cols[0],
             cols[1],
             new PlayerTextDataMapper().ToDTO(cols[2]),
-            new TeamTextDataManager().ToDTO(cols[3])
+            new TeamTextDataMapper().ToDTO(cols[3])
         );
     }
 
@@ -25,7 +25,7 @@ public class PlayerHistoryTextDataMapper extends IDataMapper<PlayerHistoryDTO,St
         sb.append(GlobalConfig.separator);
         sb.append(new PlayerTextDataMapper().ToData(data.getPlayer()));
         sb.append(GlobalConfig.separator);
-        sb.append(new TeamTextDataManager().ToData(data.getTeam()));
+        sb.append(new TeamTextDataMapper().ToData(data.getTeam()));
 
         return sb.toString();
     }

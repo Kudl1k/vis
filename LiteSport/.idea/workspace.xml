@@ -4,21 +4,56 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Leagues working ig">
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/TeamTextDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/TeamDomainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/TeamDomainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/TeamService.java" afterDir="false" />
+    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="working teams">
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/MatchTextDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/MatchDomainModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/MatchDomainMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/MatchService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/util/DataParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/IDataConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/IDataConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ILeagueDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IMatchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IMatchDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ITeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ITeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/TeamTextDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/TeamTextDataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/FavouriteTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/FavouriteTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/GoalHistoryTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/GoalHistoryTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/LeagueTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/LeagueTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/MatchTextDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/MatchTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/PlayerHistoryTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/PlayerHistoryTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/TeamTextDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/TeamTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/LeagueTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/LeagueTextDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/TeamTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/TeamTextDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/UserTextDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/CategoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/CategoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/FavouriteDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/FavouriteDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/GoalHistoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/GoalHistoryDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Leagues.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Leagues.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueTeam.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueTeam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/MatchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/MatchDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/PlayerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/PlayerDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/PlayerHistoryDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/PlayerHistoryDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/TeamDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/TeamDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/CategoryDomainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/CategoryDomainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/LeagueDomainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/LeagueDomainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/TeamDomainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/TeamDomainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/UserDomainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/UserDomainModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/LeagueDomainMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/LeagueDomainMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/LeagueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/LeagueService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/TeamService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/Football.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/Football.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/LiteSport.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,36 +101,36 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.LiteSportApp.executor": "Run",
-    "Application.Main.executor": "Run",
-    "Maven.DataLibrary [clean].executor": "Run",
-    "Maven.DataLibrary [compile].executor": "Run",
-    "Maven.DataLibrary [install].executor": "Run",
-    "Maven.DomainLayer [clean].executor": "Run",
-    "Maven.DomainLayer [compile].executor": "Run",
-    "Maven.DomainLayer [install].executor": "Run",
-    "Maven.DomainLayer [validate].executor": "Run",
-    "Maven.DomainLayer [verify].executor": "Run",
-    "Maven.LiteSport [clean].executor": "Run",
-    "Maven.LiteSport [compile].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.LiteSportApp.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DataLibrary [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DataLibrary [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DataLibrary [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DomainLayer [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DomainLayer [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DomainLayer [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DomainLayer [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.DomainLayer [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.LiteSport [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.LiteSport [compile].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="LiteSportApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="cz.kudladev.LiteSportApp" />
@@ -134,7 +169,13 @@
       <updated>1730375338226</updated>
       <workItem from="1730375339163" duration="1224000" />
       <workItem from="1731619579977" duration="1073000" />
-      <workItem from="1731660329040" duration="32724000" />
+      <workItem from="1731660329040" duration="34658000" />
+      <workItem from="1731746320463" duration="3613000" />
+      <workItem from="1731848975333" duration="2124000" />
+      <workItem from="1732012549102" duration="190000" />
+      <workItem from="1732102883643" duration="3385000" />
+      <workItem from="1732648223210" duration="746000" />
+      <workItem from="1732794638759" duration="9179000" />
     </task>
     <task id="LOCAL-00001" summary="Create user and Login works">
       <option name="closed" value="true" />
@@ -160,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731690063237</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="working teams">
+      <option name="closed" value="true" />
+      <created>1731704393453</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1731704393453</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,6 +219,7 @@
     <MESSAGE value="Create user and Login works" />
     <MESSAGE value="Working log in and log out" />
     <MESSAGE value="Leagues working ig" />
-    <option name="LAST_COMMIT_MESSAGE" value="Leagues working ig" />
+    <MESSAGE value="working teams" />
+    <option name="LAST_COMMIT_MESSAGE" value="working teams" />
   </component>
 </project>

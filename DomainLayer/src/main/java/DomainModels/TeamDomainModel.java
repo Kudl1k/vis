@@ -21,4 +21,9 @@ public class TeamDomainModel {
         this.leagueDomainModel = leagueDomainModel;
         this.categoryDomainModel = categoryDomainModel;
     }
+
+    @Override
+    public String toString(){
+        return name + "(" + countryCode + "-" + leagueDomainModel.toString() + "-" + categoryDomainModel.toString() + ")";
+    }
 }

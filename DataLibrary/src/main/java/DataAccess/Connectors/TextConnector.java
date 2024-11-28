@@ -1,17 +1,14 @@
 package DataAccess.Connectors;
 
 import DataAccess.DataAccessObjects.Interface.*;
-import DataAccess.DataAccessObjects.Text.CategoryTextDAO;
-import DataAccess.DataAccessObjects.Text.LeagueTextDAO;
-import DataAccess.DataAccessObjects.Text.TeamTextDAO;
-import DataAccess.DataAccessObjects.Text.UserTextDAO;
+import DataAccess.DataAccessObjects.Text.*;
 
 public class TextConnector implements IDataConnection {
     private ICategoryDAO categoryDao;
     private IFavouriteDAO favouriteDao;
     private IGoalHistoryDAO goalHistoryDao;
     private ILeagueDAO leagueDao;
-    private IMatchDTO matchDao;
+    private IMatchDAO matchDao;
     private IPlayerHistoryDAO playerHistoryDao;
     private IPlayerDAO playerDao;
     private ITeamDAO teamDao;
@@ -22,6 +19,7 @@ public class TextConnector implements IDataConnection {
         this.categoryDao = new CategoryTextDAO();
         this.leagueDao = new LeagueTextDAO();
         this.teamDao = new TeamTextDAO();
+        this.matchDao = new MatchTextDAO();
     }
 
 
@@ -46,8 +44,8 @@ public class TextConnector implements IDataConnection {
     }
 
     @Override
-    public IMatchDTO getMatchDao() {
-        return null;
+    public IMatchDAO getMatchDao() {
+        return matchDao;
     }
 
     @Override

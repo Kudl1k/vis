@@ -1,10 +1,9 @@
 package DataAccess.DataAccessObjects.Mappers;
 
 import DataAccess.Connectors.GlobalConfig;
-import DataTransferObjects.CategoryDTO;
 import DataTransferObjects.TeamDTO;
 
-public class TeamTextDataManager extends IDataMapper<TeamDTO,String> {
+public class TeamTextDataMapper extends IDataMapper<TeamDTO,String> {
     @Override
     public TeamDTO ToDTO(String data) {
         String[] cols = data.split(GlobalConfig.separator);
@@ -13,8 +12,8 @@ public class TeamTextDataManager extends IDataMapper<TeamDTO,String> {
                 Integer.parseInt(cols[0]),
                 cols[1],
                 cols[2],
-                new CategoryTextDataMapper().ToDTO(cols[3]),
-                new LeagueTextDataMapper().ToDTO(cols[4])
+                GlobalConfig.connection.getCategoryDao().GetCategory(cols[3]),
+                GlobalConfig.connection.getLeagueDao().GetLeague(Integer.parseInt(cols[4]))
         );
     }
 

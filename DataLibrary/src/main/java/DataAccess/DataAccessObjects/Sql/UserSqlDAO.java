@@ -52,6 +52,11 @@ public class UserSqlDAO implements IUserDAO {
     }
 
     @Override
+    public UserDTO GetUser(int userID) {
+        return null;
+    }
+
+    @Override
     public boolean UpdateUser(UserDTO user) {
         return false;
     }

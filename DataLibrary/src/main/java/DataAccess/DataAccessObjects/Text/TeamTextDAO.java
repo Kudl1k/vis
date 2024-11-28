@@ -2,7 +2,7 @@ package DataAccess.DataAccessObjects.Text;
 
 import DataAccess.Connectors.TextConnectorUtils;
 import DataAccess.DataAccessObjects.Interface.ITeamDAO;
-import DataAccess.DataAccessObjects.Mappers.TeamTextDataManager;
+import DataAccess.DataAccessObjects.Mappers.TeamTextDataMapper;
 import DataTransferObjects.*;
 
 import java.nio.file.Path;
@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class TeamTextDAO implements ITeamDAO {
     public static String teamFile = "Team.csv";
 
-    private TeamTextDataManager teamManager;
+    private TeamTextDataMapper teamManager;
 
     public TeamTextDAO() {
-        teamManager = new TeamTextDataManager();
+        teamManager = new TeamTextDataMapper();
     }
 
 
@@ -44,18 +44,16 @@ public class TeamTextDAO implements ITeamDAO {
         Iterable<String> lines = TextConnectorUtils.loadFile(path);
         ArrayList<TeamDTO> teams = teamManager.ToDTOList(lines);
 
-        teams.forEach(team -> team.setCategory(new CategoryDTO(team.getCategory().getName())));
-        teams.forEach(team -> team.setLeague(
-                new LeagueDTO(
-                        team.getLeague().getId(),
-                        team.getLeague().getName(),
-                        team.getLeague().getCountryCode(),
-                        new CategoryDTO(team.getCategory().getName())
-                )
-            )
-        );
-
         return teams.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
+    }
+
+    @Override
+    public TeamDTO[] GetTeamsByLeague(int leagueID) {
+        Path path = TextConnectorUtils.fullFilePath(teamFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<TeamDTO> teams = teamManager.ToDTOList(lines);
+
+        return teams.stream().filter(t -> t.getLeague().getId() == leagueID).toArray(TeamDTO[]::new);
     }
 
     @Override

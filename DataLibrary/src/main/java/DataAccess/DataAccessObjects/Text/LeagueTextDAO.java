@@ -13,7 +13,6 @@ import java.util.Objects;
 public class LeagueTextDAO implements ILeagueDAO {
     public static String leagueFile = "Leagues.csv";
 
-    public static String TeamLeagueFile = "TeamLeagues.csv";
 
     private LeagueTextDataMapper leagueMapper;
 
@@ -57,12 +56,21 @@ public class LeagueTextDAO implements ILeagueDAO {
     }
 
     @Override
-    public LeagueDTO[] GetLeaguesByCategory(String category) {
+    public LeagueDTO GetLeague(int id) {
         Path path = TextConnectorUtils.fullFilePath(leagueFile);
         Iterable<String> lines = TextConnectorUtils.loadFile(path);
         ArrayList<LeagueDTO> leagues = leagueMapper.ToDTOList(lines);
 
-        return leagues.stream().filter(l -> Objects.equals(l.getCategoryDTO().getName(), category)).toArray(LeagueDTO[]::new);
+        return leagues.stream().filter(l -> l.getId() == id).findFirst().orElse(null);
+    }
+
+    @Override
+    public LeagueDTO[] GetLeaguesByCategory(CategoryDTO category) {
+        Path path = TextConnectorUtils.fullFilePath(leagueFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<LeagueDTO> leagues = leagueMapper.ToDTOList(lines);
+
+        return leagues.stream().filter(l -> Objects.equals(l.getCategoryDTO().getName(), category.getName())).toArray(LeagueDTO[]::new);
     }
 
     @Override
@@ -85,7 +93,7 @@ public class LeagueTextDAO implements ILeagueDAO {
         if (leagueToUpdate == null) {
             return false;
         }
-        Path pathTeamLeague = TextConnectorUtils.fullFilePath(TeamLeagueFile);
+        Path pathTeamLeague = TextConnectorUtils.fullFilePath(TeamTextDAO.teamFile);
         Iterable<String> linesTeamLeague = TextConnectorUtils.loadFile(pathTeamLeague);
 
 

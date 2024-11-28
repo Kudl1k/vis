@@ -70,6 +70,15 @@ public class UserTextDAO implements IUserDAO {
     }
 
     @Override
+    public UserDTO GetUser(int userID) {
+        Path path = TextConnectorUtils.fullFilePath(userFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<UserDTO> users = userMapper.ToDTOList(lines);
+
+        return users.stream().filter(u -> u.getId() == userID).findFirst().orElse(null);
+    }
+
+    @Override
     public boolean UpdateUser(UserDTO user) {
         Path path = TextConnectorUtils.fullFilePath(userFile);
         Iterable<String> lines = TextConnectorUtils.loadFile(path);

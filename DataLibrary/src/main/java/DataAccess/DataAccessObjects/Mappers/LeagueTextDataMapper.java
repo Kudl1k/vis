@@ -11,7 +11,7 @@ public class LeagueTextDataMapper extends IDataMapper<LeagueDTO,String> {
         league.setId(Integer.parseInt(cols[0]));
         league.setName(cols[1]);
         league.setCountryCode(cols[2]);
-        league.setCategoryDTO(new CategoryTextDataMapper().ToDTO(cols[3]));
+        league.setCategoryDTO(GlobalConfig.connection.getCategoryDao().GetCategory(cols[3]));
 
         return league;
     }

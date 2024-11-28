@@ -11,7 +11,7 @@ public class GoalHistoryTextDataMapper extends IDataMapper<GoalHistoryDTO,String
         return new GoalHistoryDTO(
                 Integer.parseInt(cols[0]),
                 new PlayerTextDataMapper().ToDTO(cols[1]),
-                new TeamTextDataManager().ToDTO(cols[2]),
+                new TeamTextDataMapper().ToDTO(cols[2]),
                 new UserTextDataMapper().ToDTO(cols[3])
         );
     }
@@ -23,7 +23,7 @@ public class GoalHistoryTextDataMapper extends IDataMapper<GoalHistoryDTO,String
         sb.append(GlobalConfig.separator);
         sb.append(new PlayerTextDataMapper().ToData(data.getPlayer()));
         sb.append(GlobalConfig.separator);
-        sb.append(new TeamTextDataManager().ToData(data.getTeam()));
+        sb.append(new TeamTextDataMapper().ToData(data.getTeam()));
         sb.append(GlobalConfig.separator);
         sb.append(new UserTextDataMapper().ToData(data.getCreator()));
 

@@ -23,4 +23,12 @@ public class CategoryService {
         }
         return models;
     }
+
+    public CategoryDomainModel GetCategory(String name) {
+        CategoryDTO category = GlobalConfig
+                .connection
+                .getCategoryDao()
+                .GetCategory(name);
+        return mapper.ToDomain(category);
+    }
 }

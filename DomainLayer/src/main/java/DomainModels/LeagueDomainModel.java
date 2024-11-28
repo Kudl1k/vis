@@ -1,5 +1,6 @@
 package DomainModels;
 
+import Services.LeagueService;
 import lombok.*;
 
 @Getter
@@ -18,6 +19,11 @@ public class LeagueDomainModel {
         this.countryCode = countryCode;
         this.category = category;
     }
+    public LeagueDomainModel(String name, String countryCode, CategoryDomainModel categoryDomainModel) {
+        this.name = name;
+        this.countryCode = countryCode;
+        this.categoryDomainModel = categoryDomainModel;
+    }
 
     public CategoryDomainModel getCategory() {
         if (categoryDomainModel == null) {
@@ -28,5 +34,10 @@ public class LeagueDomainModel {
 
     private CategoryDomainModel loadCategoryDomainModel() {
         return new CategoryDomainModel(category);
+    }
+
+    @Override
+    public String toString(){
+        return name + "(" + countryCode + "-" + categoryDomainModel.toString() + ")";
     }
 }

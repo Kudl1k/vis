@@ -2,16 +2,24 @@ package cz.kudladev.admin;
 
 import DomainModels.CategoryDomainModel;
 import DomainModels.LeagueDomainModel;
+import DomainModels.MatchDomainModel;
 import DomainModels.TeamDomainModel;
 import Services.CategoryService;
 import Services.LeagueService;
+import Services.MatchService;
 import Services.TeamService;
+import com.browniebytes.javafx.control.DateTimePicker;
+import cz.kudladev.core.LiteSportAppState;
+import cz.kudladev.util.DataParser;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class AdminController implements Initializable {
@@ -19,9 +27,13 @@ public class AdminController implements Initializable {
     private CategoryService categoryService;
     private LeagueService leagueService;
     private TeamService teamService;
+    private MatchService matchService;
 
+    //FXML elements
+
+    //League
     @FXML
-    private ChoiceBox<String> LeagueCategoryCombobox;
+    private ChoiceBox<CategoryDomainModel> LeagueCategoryCombobox;
     @FXML
     private TextField LeagueNameTextField;
     @FXML
@@ -29,10 +41,11 @@ public class AdminController implements Initializable {
     @FXML
     private Label LeagueErrorText;
 
+    //Team
     @FXML
-    private ChoiceBox<String> TeamCategoryCombobox;
+    private ChoiceBox<CategoryDomainModel> TeamCategoryCombobox;
     @FXML
-    private ChoiceBox<String> TeamLeagueCombobox;
+    private ChoiceBox<LeagueDomainModel> TeamLeagueCombobox;
     @FXML
     private TextField TeamNameTextField;
     @FXML
@@ -41,31 +54,56 @@ public class AdminController implements Initializable {
     private Label TeamErrorText;
 
 
+    //Match
+    @FXML
+    private ChoiceBox<CategoryDomainModel> MatchCategoryCombobox;
+    @FXML
+    private ChoiceBox<LeagueDomainModel> MatchLeagueCombobox;
+    @FXML
+    private ChoiceBox<TeamDomainModel> MatchHomeTeamCombobox;
+    @FXML
+    private ChoiceBox<TeamDomainModel> MatchAwayTeamCombobox;
+    @FXML
+    private DateTimePicker MatchDateTimePicker;
+    @FXML
+    private Label MatchErrorText;
+    @FXML
+    private Button MatchCreateButton;
+
     private boolean clickedCreate = false;
 
     public AdminController() {
         this.categoryService = new CategoryService();
         this.leagueService = new LeagueService();
         this.teamService = new TeamService();
+        this.matchService = new MatchService();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("Admin controller initialized");
         CategoryDomainModel[] categories = categoryService.GetCategories();
-        for (CategoryDomainModel category : categories) {
-            LeagueCategoryCombobox.getItems().add(category.getName());
-        }
+        ObservableList<CategoryDomainModel> categoryList = FXCollections.observableArrayList(categories);
+
+        LeagueCategoryCombobox.setItems(categoryList);
+        TeamCategoryCombobox.setItems(categoryList);
+        MatchCategoryCombobox.setItems(categoryList);
+
         LeagueCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> resetLeagueError());
         LeagueNameTextField.textProperty().addListener((observable, oldValue, newValue) -> resetLeagueError());
         LeagueLanguageCodeTextField.textProperty().addListener((observable, oldValue, newValue) -> resetLeagueError());
 
-        for (CategoryDomainModel category : categories) {
-            TeamCategoryCombobox.getItems().add(category.getName());
-        }
+
         TeamCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> {
             resetTeamError();
             fillTeamLeagueCombobox(TeamCategoryCombobox.getValue());
+        });
+        MatchCategoryCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            resetMatchError();
+            fillMatchLeagueCombobox(MatchCategoryCombobox.getValue());
+        });
+        MatchLeagueCombobox.addEventHandler(ActionEvent.ACTION, event -> {
+            resetMatchError();
+            fillMatchTeamsCombobox(MatchLeagueCombobox.getValue());
         });
     }
 
@@ -73,9 +111,9 @@ public class AdminController implements Initializable {
     public void LeagueCreateButton(){
         String name = LeagueNameTextField.getText();
         String languageCode = LeagueLanguageCodeTextField.getText();
-        String category = LeagueCategoryCombobox.getValue();
+        CategoryDomainModel category = LeagueCategoryCombobox.getValue();
         clickedCreate = true;
-        if(name.isEmpty() || languageCode.isEmpty() || category.isEmpty()){
+        if(name.isEmpty() || languageCode.isEmpty() || category == null){
             LeagueErrorText.setText("Please fill all fields");
             return;
         }
@@ -86,7 +124,6 @@ public class AdminController implements Initializable {
         } else {
             LeagueErrorText.setText("Error creating league");
         }
-
     }
 
     private void resetLeagueError() {
@@ -101,18 +138,18 @@ public class AdminController implements Initializable {
     public void TeamCreateButton(){
         String name = TeamNameTextField.getText();
         String languageCode = TeamLanguageCodeTextField.getText();
-        String category = TeamCategoryCombobox.getValue();
-        String league = TeamLeagueCombobox.getValue();
+        CategoryDomainModel category = TeamCategoryCombobox.getValue();
+        LeagueDomainModel league = TeamLeagueCombobox.getValue();
         clickedCreate = true;
-        if(name.isEmpty() || languageCode.isEmpty() || category.isEmpty() || league.isEmpty()){
+        if(name.isEmpty() || languageCode.isEmpty() || category == null || league == null){
             TeamErrorText.setText("Please fill all fields");
             return;
         }
         TeamDomainModel team = new TeamDomainModel(
             name,
             languageCode,
-            new LeagueDomainModel(league, "", ""),
-            new CategoryDomainModel(category)
+            league,
+            category
         );
         if(teamService.CreateTeam(team)){
             //change text to green
@@ -131,14 +168,64 @@ public class AdminController implements Initializable {
         }
     }
 
-    private void fillTeamLeagueCombobox(String category) {
+    private void fillTeamLeagueCombobox(CategoryDomainModel category) {
         LeagueDomainModel[] leagues = leagueService.GetLeagues(category);
-        TeamLeagueCombobox.getItems().clear();
-        for (LeagueDomainModel league : leagues) {
-            TeamLeagueCombobox.getItems().add(league.getName());
+        ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(leagues);
+        TeamLeagueCombobox.setItems(leagueList);
+    }
+
+    @FXML
+    public void MatchCreateButton() {
+        CategoryDomainModel category = MatchCategoryCombobox.getValue();
+        LeagueDomainModel league = MatchLeagueCombobox.getValue();
+        TeamDomainModel homeTeam = MatchHomeTeamCombobox.getValue();
+        TeamDomainModel awayTeam = MatchAwayTeamCombobox.getValue();
+        String dateTime = MatchDateTimePicker.getTime().toString();
+        clickedCreate = true;
+        if (category == null || league == null || homeTeam == null || awayTeam == null || dateTime.isEmpty()) {
+            MatchErrorText.setText("Please fill all fields");
+            return;
+        }
+        MatchDomainModel match = new MatchDomainModel(
+            homeTeam,
+            awayTeam,
+            0,
+            0,
+            DataParser.parseAndFormatDate(dateTime),
+            "",
+            0,
+            "",
+            category,
+            league,
+            LiteSportAppState.getInstance().getLoggedInUser()
+        );
+        if (matchService.CreateMatch(match)) {
+            MatchErrorText.setText("Match created");
+            MatchErrorText.setStyle("-fx-text-fill: #09c909");
+        } else {
+            MatchErrorText.setText("Error creating match");
         }
     }
 
+    private void resetMatchError() {
+        if (clickedCreate) {
+            MatchErrorText.setText("");
+            MatchErrorText.setStyle("-fx-text-fill: red");
+            clickedCreate = false;
+        }
+    }
 
+    private void fillMatchLeagueCombobox(CategoryDomainModel category) {
+        LeagueDomainModel[] leagues = leagueService.GetLeagues(category);
+        ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(leagues);
+        MatchLeagueCombobox.setItems(leagueList);
+    }
+
+    private void fillMatchTeamsCombobox(LeagueDomainModel league) {
+        TeamDomainModel[] teams = teamService.GetTeamsByLeague(league);
+        ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teams);
+        MatchHomeTeamCombobox.setItems(teamList);
+        MatchAwayTeamCombobox.setItems(teamList);
+    }
 
 }

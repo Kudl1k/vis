@@ -2,7 +2,6 @@ package DataAccess.DataAccessObjects.Mappers;
 
 import DataAccess.Connectors.GlobalConfig;
 import DataTransferObjects.FavouriteDTO;
-import DataTransferObjects.MatchDTO;
 
 public class FavouriteTextDataMapper extends IDataMapper<FavouriteDTO,String> {
 
@@ -12,7 +11,7 @@ public class FavouriteTextDataMapper extends IDataMapper<FavouriteDTO,String> {
 
         return new FavouriteDTO(
             new UserTextDataMapper().ToDTO(cols[0]),
-            new MatchTextDataManager().ToDTO(cols[1])
+            new MatchTextDataMapper().ToDTO(cols[1])
         );
     }
 
@@ -21,7 +20,7 @@ public class FavouriteTextDataMapper extends IDataMapper<FavouriteDTO,String> {
         StringBuilder sb = new StringBuilder();
         sb.append(new UserTextDataMapper().ToData(data.getUser()));
         sb.append(GlobalConfig.separator);
-        sb.append(new MatchTextDataManager().ToData(data.getMatch()));
+        sb.append(new MatchTextDataMapper().ToData(data.getMatch()));
 
         return sb.toString();
     }

@@ -11,7 +11,7 @@ public class SqlConnector implements IDataConnection{
     private IFavouriteDAO favouriteDao;
     private IGoalHistoryDAO goalHistoryDao;
     private ILeagueDAO leagueDao;
-    private IMatchDTO matchDao;
+    private IMatchDAO matchDao;
     private IPlayerHistoryDAO playerHistoryDao;
     private IPlayerDAO playerDao;
     private ITeamDAO teamDao;
@@ -52,7 +52,7 @@ public class SqlConnector implements IDataConnection{
     }
 
     @Override
-    public IMatchDTO getMatchDao() {
+    public IMatchDAO getMatchDao() {
         return null;
     }
 

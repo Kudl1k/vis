@@ -8,7 +8,7 @@ public interface IDataConnection {
     public IFavouriteDAO getFavouriteDao();
     public IGoalHistoryDAO getGoalHistoryDao();
     public ILeagueDAO getLeagueDao();
-    public IMatchDTO getMatchDao();
+    public IMatchDAO getMatchDao();
     public IPlayerHistoryDAO getPlayerHistoryDao();
     public IPlayerDAO getPlayerDao();
     public ITeamDAO getTeamDao();
