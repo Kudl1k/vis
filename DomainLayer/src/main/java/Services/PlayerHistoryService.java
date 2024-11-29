@@ -7,6 +7,8 @@ import DomainModels.PlayerHistoryDomainModel;
 import Mappers.PlayerDomainMapper;
 import Mappers.PlayerHistoryDomainMapper;
 
+import java.time.LocalDate;
+
 public class PlayerHistoryService {
     private PlayerHistoryDomainMapper mapper;
 
@@ -16,6 +18,17 @@ public class PlayerHistoryService {
     }
 
     public boolean CreatePlayerHistory(PlayerHistoryDomainModel model) {
+        LocalDate startDate = LocalDate.parse(model.getStartDate());
+        LocalDate endDate = LocalDate.parse(model.getEndDate());
+
+        System.out.println(startDate);
+        System.out.println(endDate);
+        if (startDate.isAfter(endDate)) {
+            System.out.println("Start date is not after end date");
+            return false;
+        }
+        System.out.println("Start date is after end date");
+
         return GlobalConfig
                 .connection
                 .getPlayerHistoryDao()

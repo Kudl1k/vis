@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PlayerHistoryTextDAO implements IPlayerHistoryDAO {
 
@@ -26,7 +27,8 @@ public class PlayerHistoryTextDAO implements IPlayerHistoryDAO {
     public boolean addPlayerHistory(PlayerHistoryDTO playerHistory) {
         Path path = TextConnectorUtils.fullFilePath(playerHistoryFile);
         Iterable<String> lines = TextConnectorUtils.loadFile(path);
-        ArrayList<PlayerHistoryDTO> playerHistories = playerHistoryMapper.ToDTOList(lines);
+        ArrayList<PlayerHistoryDTO> allPlayerHistories = playerHistoryMapper.ToDTOList(lines);
+        ArrayList<PlayerHistoryDTO> playerHistories = new ArrayList<>(List.of(getPlayerHistory(playerHistory.getPlayer())));
 
 
         if (!playerHistories.isEmpty()) {
@@ -39,9 +41,9 @@ public class PlayerHistoryTextDAO implements IPlayerHistoryDAO {
             }
         }
 
-        playerHistories.add(playerHistory);
+        allPlayerHistories.add(playerHistory);
 
-        TextConnectorUtils.saveToFile(playerHistoryMapper.ToDataList(playerHistories), playerHistoryFile);
+        TextConnectorUtils.saveToFile(playerHistoryMapper.ToDataList(allPlayerHistories), playerHistoryFile);
 
         return true;
     }

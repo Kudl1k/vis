@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -339,6 +340,7 @@ public class AdminController implements Initializable {
             TransferFromTeamCombobox.setItems(teamList);
             TransferFromTeamCombobox.setValue(teams[0]);
             fillTransferToTeamCombobox(teams[0]);
+            TransferStartDatePicker.setValue(LocalDate.parse(playerHistory[playerHistory.length - 1].getEndDate()));
         }
     }
 

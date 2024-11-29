@@ -4,29 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Player creation working">
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/PlayerHistoryTextDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/PlayerHistoryDomainModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/PlayerHistoryDomainMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/PlayerHistoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IPlayerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IPlayerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IPlayerHistoryDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IPlayerHistoryDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ITeamDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/ITeamDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/PlayerHistoryTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/PlayerHistoryTextDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/PlayerTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/PlayerTextDataMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/PlayerTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/PlayerTextDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/TeamTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/TeamTextDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/LeagueTeam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/PlayerDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataTransferObjects/PlayerDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/PlayerDomainModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/PlayerDomainModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/PlayerDomainMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/PlayerDomainMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/PlayerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/PlayerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/TeamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/TeamService.java" afterDir="false" />
+    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Added player history">
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/PlayerHistoryTextDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/PlayerHistoryTextDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/PlayerHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/PlayerHistoryService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/admin/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/util/DataParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/util/DataParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Players.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Players.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +135,8 @@
       <workItem from="1732809189845" duration="41000" />
       <workItem from="1732809235532" duration="2174000" />
       <workItem from="1732811415374" duration="748000" />
-      <workItem from="1732813843749" duration="12777000" />
+      <workItem from="1732813843749" duration="13273000" />
+      <workItem from="1732856134995" duration="1605000" />
     </task>
     <task id="LOCAL-00001" summary="Create user and Login works">
       <option name="closed" value="true" />
@@ -202,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732821346362</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added player history">
+      <option name="closed" value="true" />
+      <created>1732829375195</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1732829375195</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +218,7 @@
     <MESSAGE value="working teams" />
     <MESSAGE value="Working adding matches and displaying them in table" />
     <MESSAGE value="Player creation working" />
-    <option name="LAST_COMMIT_MESSAGE" value="Player creation working" />
+    <MESSAGE value="Added player history" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added player history" />
   </component>
 </project>

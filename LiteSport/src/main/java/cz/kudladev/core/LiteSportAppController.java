@@ -114,7 +114,7 @@ public class LiteSportAppController implements Initializable {
         if (LiteSportAppState.getInstance().getLoggedInUser().getRole().equals("admin")) {
             Button adminButton = new Button("Admin");
             adminButton.setId("adminButton");
-            adminButton.setOnAction(e -> LiteSportApp.openWindow("Admin", 800, 600));
+            adminButton.setOnAction(e -> LiteSportApp.openWindow("Admin", 300, 400));
             LiteSportHeader.getChildren().add(adminButton);
         }
     }
