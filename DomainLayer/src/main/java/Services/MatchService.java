@@ -20,6 +20,13 @@ public class MatchService {
                 .CreateMatch(mapper.ToDTO(model));
     }
 
+    public MatchDomainModel GetMatch(int id) {
+        return mapper.ToDomain(GlobalConfig
+                .connection
+                .getMatchDao()
+                .GetMatch(id));
+    }
+
     public MatchDomainModel[] GetMatches() {
         MatchDTO[] matches = GlobalConfig
                 .connection
@@ -43,5 +50,13 @@ public class MatchService {
         }
         return models;
     }
+
+    public boolean EndMatch(MatchDomainModel match) {
+        return GlobalConfig
+                .connection
+                .getMatchDao()
+                .EndMatch(mapper.ToDTO(match));
+    }
+
 
 }

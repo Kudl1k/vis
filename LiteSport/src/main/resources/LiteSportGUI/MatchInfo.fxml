@@ -75,7 +75,7 @@
                                  <Insets bottom="5.0" />
                               </VBox.margin>
                            </ChoiceBox>
-                            <Button fx:id="addGoal" onAction="#AddGoal" mnemonicParsing="false" text="Add Goal" />
+                            <Button fx:id="addGoal" mnemonicParsing="false" onAction="#AddGoal" text="Add Goal" />
                         </children>
                   </HBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
@@ -86,15 +86,20 @@
                                  <TableView fx:id="matchInfoView" prefHeight="299.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <columns>
                                        <TableColumn fx:id="matchMinute" editable="false" maxWidth="105.0" minWidth="5.0" text="Minute" />
-                                       <TableColumn fx:id="matchTeam" editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Team" />
-                                       <TableColumn fx:id="matchPlayer" editable="false" maxWidth="250.0" minWidth="100.0" prefWidth="102.0" text="Player" />
-                                       <TableColumn fx:id="creator" editable="false" maxWidth="105.0" minWidth="5.0" text="Created by" />
+                                       <TableColumn fx:id="matchTeam" editable="false" minWidth="100.0" text="Team" />
+                                       <TableColumn fx:id="matchPlayer" editable="false" minWidth="100.0" text="Player" />
+                                       <TableColumn fx:id="creator" editable="false" minWidth="100.0" text="Created by" />
                                     </columns>
                                  </TableView>
                               </children>
                            </AnchorPane>
                         </content>
                      </ScrollPane>
+                  </VBox>
+                  <VBox fx:id="DeleteButtonVBox" alignment="CENTER" prefHeight="32.0" prefWidth="600.0">
+                     <children>
+                        <Button onAction="#onEndMatch" mnemonicParsing="false" text="End Match"  />
+                     </children>
                   </VBox>
                </children>
             </VBox>

@@ -29,15 +29,15 @@
                                                       <children>
                                                           <TableView fx:id="footballView" prefHeight="299.0" prefWidth="593.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                               <columns>
-                                                                  <TableColumn fx:id="footballID" editable="false" maxWidth="50.0" prefWidth="35.0" text="ID" />
-                                                                  <TableColumn fx:id="footballLeague" editable="false" maxWidth="200.0" prefWidth="100.0" text="League" />
-                                                                  <TableColumn fx:id="footballStadium" editable="false" maxWidth="200.0" prefWidth="100.0" text="Stadium" />
-                                                                  <TableColumn fx:id="footballStart" editable="false" maxWidth="200.0" minWidth="50.0" prefWidth="150.0" text="Start Date" />
-                                                                  <TableColumn fx:id="footballEnd" editable="false" maxWidth="200.0" minWidth="5.0" prefWidth="150.0" text="End Date" />
-                                                                  <TableColumn fx:id="footballHomeTeam" editable="false" maxWidth="250.0" minWidth="100.0" prefWidth="102.0" text="Home Team" />
-                                                                  <TableColumn fx:id="footballAwayTeam" editable="false" maxWidth="200.0" minWidth="100.0" prefWidth="100.0" text="Away Team" />
-                                                                  <TableColumn fx:id="footballHomeScore" editable="false" maxWidth="105.0" minWidth="5.0" text="Home Score" />
-                                                                  <TableColumn fx:id="footballAwayScore" editable="false" maxWidth="105.0" minWidth="5.0" text="Away Score" />
+                                                                  <TableColumn fx:id="footballID" editable="false" text="ID" />
+                                                                  <TableColumn fx:id="footballLeague" editable="false" text="League" />
+                                                                  <TableColumn fx:id="footballStadium" editable="false" text="Stadium" />
+                                                                  <TableColumn fx:id="footballStart" editable="false" text="Start Date" />
+                                                                  <TableColumn fx:id="footballEnd" editable="false" text="End Date" />
+                                                                  <TableColumn fx:id="footballHomeTeam" editable="false" text="Home Team" />
+                                                                  <TableColumn fx:id="footballAwayTeam" editable="false" text="Away Team" />
+                                                                  <TableColumn fx:id="footballHomeScore" editable="false" text="Home Score" />
+                                                                  <TableColumn fx:id="footballAwayScore" editable="false" text="Away Score" />
                                                               </columns>
                                                           </TableView>
                                                       </children>

@@ -14,6 +14,7 @@ public class GoalHistoryService {
 
     public GoalHistoryService() {
         this.mapper = new GoalHistoryDomainMapper();
+        this.matchMapper = new MatchDomainMapper();
     }
 
     public GoalHistoryDomainModel[] GetGoalHistories(MatchDomainModel match) {

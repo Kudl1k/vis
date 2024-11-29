@@ -1,5 +1,6 @@
 package DataAccess.DataAccessObjects.Text;
 
+import DataAccess.Connectors.GlobalConfig;
 import DataAccess.Connectors.TextConnectorUtils;
 import DataAccess.DataAccessObjects.Interface.IGoalHistoryDAO;
 import DataAccess.DataAccessObjects.Mappers.GoalHistoryTextDataMapper;
@@ -38,13 +39,10 @@ public class GoalHistoryTextDao implements IGoalHistoryDAO {
 
         allGoalHistories.add(goalHistory);
 
-        for (GoalHistoryDTO gh : allGoalHistories) {
-            System.out.println(gh.toString());
+        if (!GlobalConfig.connection.getMatchDao().AddGoal(goalHistory.getMatch(), goalHistory.getTeam())) {
+            return false;
         }
-
-
         TextConnectorUtils.saveToFile(goalHistoryMapper.ToDataList(allGoalHistories), goalHistoryFile);
-
         return true;
     }
 
@@ -57,7 +55,16 @@ public class GoalHistoryTextDao implements IGoalHistoryDAO {
 
     @Override
     public GoalHistoryDTO[] GetGoalHistories(MatchDTO match) {
-        return new GoalHistoryDTO[0];
+        Path path = TextConnectorUtils.fullFilePath(goalHistoryFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<GoalHistoryDTO> allGoalHistories = goalHistoryMapper.ToDTOList(lines);
+        ArrayList<GoalHistoryDTO> matchGoalHistories = new ArrayList<>();
+        for (GoalHistoryDTO gh : allGoalHistories) {
+            if (gh.getMatch().getId() == match.getId()) {
+                matchGoalHistories.add(gh);
+            }
+        }
+        return matchGoalHistories.toArray(new GoalHistoryDTO[0]);
     }
 
     @Override
@@ -65,6 +72,15 @@ public class GoalHistoryTextDao implements IGoalHistoryDAO {
         Path path = TextConnectorUtils.fullFilePath(goalHistoryFile);
         Iterable<String> lines = TextConnectorUtils.loadFile(path);
         ArrayList<GoalHistoryDTO> allGoalHistories = goalHistoryMapper.ToDTOList(lines);
+        ArrayList<GoalHistoryDTO> matchGoalHistories = new ArrayList<>(List.of(GetGoalHistories(goalHistory.getMatch())));
+
+        if (!matchGoalHistories.contains(goalHistory)) {
+            return false;
+        }
+
+        allGoalHistories.remove(goalHistory);
+
+        TextConnectorUtils.saveToFile(goalHistoryMapper.ToDataList(allGoalHistories), goalHistoryFile);
         return false;
     }
 }

@@ -3,6 +3,10 @@ package cz.kudladev.core;
 import DomainModels.LeagueDomainModel;
 import DomainModels.MatchDomainModel;
 import DomainModels.TeamDomainModel;
+import Services.CategoryService;
+import Services.LeagueService;
+import Services.MatchService;
+import Services.TeamService;
 import cz.kudladev.LiteSportApp;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +24,10 @@ import java.util.ResourceBundle;
 
 public class LiteSportAppController implements Initializable {
 
+    private LeagueService leagueService = new LeagueService();
+    private MatchService matchService = new MatchService();
+    private CategoryService categoryService = new CategoryService();
+    private TeamService teamService = new TeamService();
 
     //Football
     @FXML
@@ -53,15 +61,12 @@ public class LiteSportAppController implements Initializable {
     @FXML
     private TableColumn<MatchDomainModel, Integer> footballAwayScore;
 
+    private static ObservableList<MatchDomainModel> footballMatches = FXCollections.observableArrayList();
 
-
-
-    private Football football;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         LiteSportAppState appState = LiteSportAppState.getInstance();
-        this.football = new Football();
 
         initializeFootballTable();
 
@@ -82,13 +87,13 @@ public class LiteSportAppController implements Initializable {
             LoggedButtonLayout();
         }
 
-        ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(football.getLeagues());
+        ObservableList<LeagueDomainModel> leagueList = FXCollections.observableArrayList(leagueService.GetLeagues(categoryService.GetCategory("Football")));
         FootballLeagueChoiceBox.setItems(leagueList);
 
         FootballLeagueChoiceBox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             System.out.println("Selected league: " + newValue.getName());
             if (newValue != null) {
-                ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(football.LoadTeams(newValue));
+                ObservableList<TeamDomainModel> teamList = FXCollections.observableArrayList(teamService.GetTeamsByLeague(newValue));
                 FootballTeamChoiceBox.setItems(teamList);
             }
         });
@@ -130,10 +135,28 @@ public class LiteSportAppController implements Initializable {
         footballHomeScore.setCellValueFactory(new PropertyValueFactory<>("homeScore"));
         footballAwayScore.setCellValueFactory(new PropertyValueFactory<>("awayScore"));
 
-        this.footballView.setItems(FXCollections.observableArrayList(football.LoadMatches(null)));
+        footballID.prefWidthProperty().bind(footballView.widthProperty().multiply(0.05));
+        footballLeague.prefWidthProperty().bind(footballView.widthProperty().multiply(0.10));
+        footballStart.prefWidthProperty().bind(footballView.widthProperty().multiply(0.15));
+        footballEnd.prefWidthProperty().bind(footballView.widthProperty().multiply(0.15));
+        footballStadium.prefWidthProperty().bind(footballView.widthProperty().multiply(0.10));
+        footballHomeTeam.prefWidthProperty().bind(footballView.widthProperty().multiply(0.15));
+        footballAwayTeam.prefWidthProperty().bind(footballView.widthProperty().multiply(0.15));
+        footballHomeScore.prefWidthProperty().bind(footballView.widthProperty().multiply(0.075));
+        footballAwayScore.prefWidthProperty().bind(footballView.widthProperty().multiply(0.075));
+
+        footballMatches.setAll(matchService.GetMatches());
+
+        this.footballView.setItems(footballMatches);
 
         FootballLeagueChoiceBox.addEventHandler(ActionEvent.ACTION, event -> {
-            this.footballView.setItems(FXCollections.observableArrayList(football.LoadMatches(FootballLeagueChoiceBox.getValue())));
+            LeagueDomainModel selectedLeague = FootballLeagueChoiceBox.getSelectionModel().getSelectedItem();
+            if (selectedLeague == null) {
+                footballMatches.setAll(matchService.GetMatches());
+            } else {
+                footballMatches.setAll(matchService.GetMatchesByLeague(selectedLeague));
+            }
+            this.footballView.setItems(footballMatches);
         });
 
         this.footballView.setOnMouseClicked(this::handleRowClick);
@@ -148,6 +171,11 @@ public class LiteSportAppController implements Initializable {
                 LiteSportApp.openWindow("MatchInfo", 600, 400);
             }
         }
+    }
+
+    public void updateMatches(){
+        MatchDomainModel[] matches = matchService.GetMatches();
+        footballMatches.setAll(matches);
     }
 
 

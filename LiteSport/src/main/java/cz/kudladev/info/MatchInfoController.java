@@ -6,17 +6,19 @@ import DomainModels.MatchDomainModel;
 import DomainModels.PlayerDomainModel;
 import DomainModels.TeamDomainModel;
 import Services.GoalHistoryService;
+import Services.MatchService;
 import Services.PlayerService;
+import cz.kudladev.core.LiteSportAppController;
 import cz.kudladev.core.LiteSportAppState;
+import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.Objects;
@@ -26,6 +28,7 @@ public class MatchInfoController implements Initializable {
 
     private PlayerService playerService;
     private GoalHistoryService goalHistoryService;
+    private MatchService matchService;
 
     @FXML
     private Label homeTeam;
@@ -53,34 +56,59 @@ public class MatchInfoController implements Initializable {
     @FXML
     private Button addGoal;
 
+    @FXML
+    private TableView<GoalHistoryDomainModel> matchInfoView;
+    @FXML
+    private TableColumn<GoalHistoryDomainModel, Integer> matchMinute;
+    @FXML
+    private TableColumn<GoalHistoryDomainModel, String> matchTeam;
+    @FXML
+    private TableColumn<GoalHistoryDomainModel, String> matchPlayer;
+    @FXML
+    private TableColumn<GoalHistoryDomainModel, String> creator;
+
+    @FXML
+    private VBox DeleteButtonVBox;
+
+
+    ObservableList<GoalHistoryDomainModel> goalsList;
+
 
     public MatchInfoController(){
         playerService = new PlayerService();
         goalHistoryService = new GoalHistoryService();
+        matchService = new MatchService();
     }
 
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        matchMinute.prefWidthProperty().bind(matchInfoView.widthProperty().multiply(0.1)); // 10% of the table width
+        matchTeam.prefWidthProperty().bind(matchInfoView.widthProperty().multiply(0.3)); // 30% of the table width
+        matchPlayer.prefWidthProperty().bind(matchInfoView.widthProperty().multiply(0.3)); // 30% of the table width
+        creator.prefWidthProperty().bind(matchInfoView.widthProperty().multiply(0.3)); // 30% of the table width
+
         if (LiteSportAppState.getInstance().getSelectedMatch() != null){
-            homeTeam.setText(LiteSportAppState.getInstance().getSelectedMatch().getHomeTeam().getName());
-            awayTeam.setText(LiteSportAppState.getInstance().getSelectedMatch().getAwayTeam().getName());
-            homeScore.setText(String.valueOf(LiteSportAppState.getInstance().getSelectedMatch().getHomeScore()));
-            awayScore.setText(String.valueOf(LiteSportAppState.getInstance().getSelectedMatch().getAwayScore()));
-            stadium.setText(LiteSportAppState.getInstance().getSelectedMatch().getStadium());
-            startTime.setText(LiteSportAppState.getInstance().getSelectedMatch().getStartTime());
-            endTime.setText(LiteSportAppState.getInstance().getSelectedMatch().getEndTime());
+            SetMatchInfo();
+            GoalHistoryDomainModel[] goals = goalHistoryService.GetGoalHistories(LiteSportAppState.getInstance().getSelectedMatch());
+            this.goalsList = FXCollections.observableArrayList(goals);
+            SetMatchInfoView();
+            SetupAdminPanel();
         }
-        SetupAdminPanel();
     }
 
     private void SetupAdminPanel(){
-        if (LiteSportAppState.getInstance().getLoggedInUser() == null){
+        if (LiteSportAppState.getInstance().getLoggedInUser() == null || Objects.equals(LiteSportAppState.getInstance().getLoggedInUser().getRole(), "user")){
             adminPanel.setVisible(false);
             return;
         }
         adminPanel.setVisible(Objects.equals(LiteSportAppState.getInstance().getLoggedInUser().getRole(), "admin"));
+        if (!LiteSportAppState.getInstance().getSelectedMatch().getEndTime().isBlank() && Objects.equals(LiteSportAppState.getInstance().getLoggedInUser().getRole(), "admin")){
+            DeleteButtonVBox.setVisible(false);
+            adminPanel.setVisible(false);
+        }
 
         ObservableList<TeamDomainModel> teams = FXCollections.observableArrayList(LiteSportAppState.getInstance().getSelectedMatch().getHomeTeam(), LiteSportAppState.getInstance().getSelectedMatch().getAwayTeam());
 
@@ -123,10 +151,48 @@ public class MatchInfoController implements Initializable {
 
         if (goalHistoryService.AddGoalHistory(goal)){
             System.out.println("Goal added");
+            goalsList.add(goal);
+            SetMatchInfo();
+            SetMatchInfoView();
+            new LiteSportAppController().updateMatches();
         } else {
             System.out.println("Error adding goal");
         }
+    }
+
+    public void SetMatchInfoView(){
+
+        matchMinute.setCellValueFactory(new PropertyValueFactory<>("minute"));
+        matchTeam.setCellValueFactory(new PropertyValueFactory<>("team"));
+        matchPlayer.setCellValueFactory(new PropertyValueFactory<>("player"));
+        creator.setCellValueFactory(new PropertyValueFactory<>("creator"));
+
+        matchInfoView.setItems(goalsList);
+    }
+
+    public void SetMatchInfo(){
+        MatchDomainModel match = matchService.GetMatch(LiteSportAppState.getInstance().getSelectedMatch().getId());
+
+        homeTeam.setText(match.getHomeTeam().getName());
+        awayTeam.setText(match.getAwayTeam().getName());
+        homeScore.setText(String.valueOf(match.getHomeScore()));
+        awayScore.setText(String.valueOf(match.getAwayScore()));
+        stadium.setText(match.getStadium());
+        startTime.setText(match.getStartTime());
+        endTime.setText(match.getEndTime());
+    }
+
+    @FXML
+    private void onEndMatch(){
+        MatchDomainModel match = LiteSportAppState.getInstance().getSelectedMatch();
+
+        if (matchService.EndMatch(match)){
+            SetMatchInfo();
+            SetupAdminPanel();
+            new LiteSportAppController().updateMatches();
+        }
 
     }
+
 
 }
