@@ -38,7 +38,7 @@ public class SqlConnector implements IDataConnection{
 
     @Override
     public IFavouriteDAO getFavouriteDao() {
-        return null;
+        return this.favouriteDao;
     }
 
     @Override
@@ -53,22 +53,22 @@ public class SqlConnector implements IDataConnection{
 
     @Override
     public IMatchDAO getMatchDao() {
-        return null;
+        return this.matchDao;
     }
 
     @Override
     public IPlayerHistoryDAO getPlayerHistoryDao() {
-        return null;
+        return this.playerHistoryDao;
     }
 
     @Override
     public IPlayerDAO getPlayerDao() {
-        return null;
+        return this.getPlayerDao();
     }
 
     @Override
     public ITeamDAO getTeamDao() {
-        return null;
+        return this.teamDao;
     }
 
     @Override

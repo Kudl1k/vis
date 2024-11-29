@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class GlobalConfig {
     public static String dbName = "db.connectionString";
-    public static IDataConnection connection = new TextConnector();
+    public static IDataConnection connection = new SqlConnector();
     public static String separator = ",";
     public static String configFilePath = "/Users/stepankudlacek/Developer/IdeaProjects/vis/DataLibrary/src/config.properties";
     public static String dataFilePathName = "dataFilePath";

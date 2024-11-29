@@ -25,6 +25,7 @@ public class LiteSportAppState {
     private UserDomainModel loggedInUser = null;
     private String footballSelectedCategory = "";
     private MatchDomainModel selectedMatch = null;
+    private MatchDomainModel[] matches = null;
 
     private LiteSportAppState() {
         // private constructor to prevent instantiation

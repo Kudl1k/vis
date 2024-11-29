@@ -8,102 +8,62 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static DataAccess.Connectors.SqlConnectorUtils.getConnection;
+
 public class CategorySqlDAO implements ICategoryDAO {
     @Override
     public boolean CreateCategory(CategoryDTO category) {
-        Connection conn = null;
-        boolean isValid = true;
-        try {
-            String connectionString = GlobalConfig.CnnString(GlobalConfig.dbName);
-            conn = DriverManager.getConnection(connectionString);
-            if (conn != null) {
-                String sql = "INSERT INTO Category(name)\n"
-                        + "VALUES(?);";
-                PreparedStatement statement = conn.prepareStatement(sql);
+        try(Connection connection = getConnection()){
+            if (connection != null) {
+                String sql = "INSERT INTO Category (name) VALUES (?);";
+                PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, category.getName());
                 statement.executeUpdate();
+                return true;
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            isValid = false;
-        } finally {
-            try {
-                if (conn != null && !conn.isClosed()) {
-                    conn.close();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return isValid;
+        return false;
     }
 
     @Override
     public CategoryDTO[] GetCategories() {
-        Connection conn = null;
         List<CategoryDTO> categories = new ArrayList<>();
-        try {
-            String connectionString = GlobalConfig.CnnString(GlobalConfig.dbName);
-            conn = DriverManager.getConnection(connectionString);
-            if (conn != null) {
-                String sql = "SELECT id, name\n"
-                        + "FROM Category";
-                Statement statement = conn.createStatement();
-                ResultSet rs = statement.executeQuery(sql);
-                while(rs.next())
-                {
-                    CategoryDTO category = new CategoryDTO(
-                        rs.getString("name")
-                    );
-                    categories.add(category);
+        try(Connection connection = getConnection()){
+            if (connection != null) {
+                String sql = "SELECT name FROM Category;";
+                PreparedStatement statement = connection.prepareStatement(sql);
+                ResultSet rs = statement.executeQuery();
+                while (rs.next()) {
+                    categories.add(new CategoryDTO(
+                            rs.getString("name")
+                    ));
                 }
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                if (conn != null && !conn.isClosed()) {
-                    conn.close();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return categories.toArray(new CategoryDTO[0]);
     }
 
     @Override
     public CategoryDTO GetCategory(String name) {
-        Connection conn = null;
-        CategoryDTO category = null;
-        try {
-            String connectionString = GlobalConfig.CnnString(GlobalConfig.dbName);
-            conn = DriverManager.getConnection(connectionString);
-            if (conn != null) {
-                String sql = "SELECT name\n"
-                        + "FROM Category\n"
-                        + "WHERE name = ?;";
-                PreparedStatement statement = conn.prepareStatement(sql);
+        try(Connection connection = getConnection()){
+            if (connection != null) {
+                String sql = "SELECT name FROM Category WHERE name = ?;";
+                PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, name);
                 ResultSet rs = statement.executeQuery();
-                if (rs.next())
-                {
-                    category = new CategoryDTO(
-                        rs.getString("name")
+                if (rs.next()) {
+                    return new CategoryDTO(
+                            rs.getString("name")
                     );
                 }
             }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        } finally {
-            try {
-                if (conn != null && !conn.isClosed()) {
-                    conn.close();
-                }
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return category;
+        return null;
     }
 }
