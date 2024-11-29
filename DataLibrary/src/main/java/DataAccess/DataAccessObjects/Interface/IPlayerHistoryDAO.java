@@ -8,4 +8,5 @@ public interface IPlayerHistoryDAO {
     boolean addPlayerHistory(PlayerHistoryDTO playerHistory);
     boolean removeLastPlayerHistory(PlayerDTO player);
     PlayerHistoryDTO[] getPlayerHistory(PlayerDTO player);
+    PlayerHistoryDTO[] getPlayersHistoryInTeam(TeamDTO team);
 }

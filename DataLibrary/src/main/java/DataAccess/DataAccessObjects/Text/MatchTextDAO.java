@@ -61,7 +61,11 @@ public class MatchTextDAO implements IMatchDAO {
 
     @Override
     public MatchDTO GetMatch(int matchID) {
-        return null;
+        Path path = TextConnectorUtils.fullFilePath(matchFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<MatchDTO> matches = matchMapper.ToDTOList(lines);
+
+        return matches.stream().filter(m -> m.getId() == matchID).findFirst().orElse(null);
     }
 
     @Override

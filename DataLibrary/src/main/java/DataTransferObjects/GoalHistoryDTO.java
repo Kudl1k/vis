@@ -13,5 +13,6 @@ public class GoalHistoryDTO {
     private int minute;
     private PlayerDTO player;
     private TeamDTO team;
+    private MatchDTO match;
     private UserDTO creator;
 }

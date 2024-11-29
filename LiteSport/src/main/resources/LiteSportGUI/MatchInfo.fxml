@@ -62,6 +62,22 @@
                         </VBox>
                      </children>
                   </HBox>
+                  <HBox fx:id="adminPanel" alignment="CENTER" prefHeight="30.0" prefWidth="600.0">
+                        <children>
+                           <TextField fx:id="minute" prefHeight="25.0" prefWidth="100.0" promptText="Minute" />
+                           <ChoiceBox fx:id="team" prefWidth="150.0">
+                              <VBox.margin>
+                                 <Insets bottom="5.0" />
+                              </VBox.margin>
+                           </ChoiceBox>
+                           <ChoiceBox fx:id="player" prefWidth="150.0">
+                              <VBox.margin>
+                                 <Insets bottom="5.0" />
+                              </VBox.margin>
+                           </ChoiceBox>
+                            <Button fx:id="addGoal" onAction="#AddGoal" mnemonicParsing="false" text="Add Goal" />
+                        </children>
+                  </HBox>
                   <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                      <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" BorderPane.alignment="CENTER">
                         <content>

@@ -22,6 +22,7 @@ public class TextConnector implements IDataConnection {
         this.matchDao = new MatchTextDAO();
         this.playerDao = new PlayerTextDAO();
         this.playerHistoryDao = new PlayerHistoryTextDAO();
+        this.goalHistoryDao = new GoalHistoryTextDao();
     }
 
 
@@ -37,7 +38,7 @@ public class TextConnector implements IDataConnection {
 
     @Override
     public IGoalHistoryDAO getGoalHistoryDao() {
-        return null;
+        return goalHistoryDao;
     }
 
     @Override

@@ -10,9 +10,10 @@ public class GoalHistoryTextDataMapper extends IDataMapper<GoalHistoryDTO,String
 
         return new GoalHistoryDTO(
                 Integer.parseInt(cols[0]),
-                new PlayerTextDataMapper().ToDTO(cols[1]),
-                new TeamTextDataMapper().ToDTO(cols[2]),
-                new UserTextDataMapper().ToDTO(cols[3])
+                GlobalConfig.connection.getPlayerDao().GetPlayer(Integer.parseInt(cols[1])),
+                GlobalConfig.connection.getTeamDao().GetTeam(Integer.parseInt(cols[2])),
+                GlobalConfig.connection.getMatchDao().GetMatch(Integer.parseInt(cols[3])),
+                GlobalConfig.connection.getUserDao().GetUser(Integer.parseInt(cols[4]))
         );
     }
 
@@ -21,11 +22,13 @@ public class GoalHistoryTextDataMapper extends IDataMapper<GoalHistoryDTO,String
         StringBuilder sb = new StringBuilder();
         sb.append(data.getMinute());
         sb.append(GlobalConfig.separator);
-        sb.append(new PlayerTextDataMapper().ToData(data.getPlayer()));
+        sb.append(data.getPlayer().getId());
         sb.append(GlobalConfig.separator);
-        sb.append(new TeamTextDataMapper().ToData(data.getTeam()));
+        sb.append(data.getTeam().getId());
         sb.append(GlobalConfig.separator);
-        sb.append(new UserTextDataMapper().ToData(data.getCreator()));
+        sb.append(data.getMatch().getId());
+        sb.append(GlobalConfig.separator);
+        sb.append(data.getCreator().getId());
 
         return sb.toString();
     }

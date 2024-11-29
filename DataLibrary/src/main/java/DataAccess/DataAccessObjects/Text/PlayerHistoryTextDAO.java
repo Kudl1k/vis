@@ -80,4 +80,23 @@ public class PlayerHistoryTextDAO implements IPlayerHistoryDAO {
                 .filter(playerHistory -> playerHistory.getPlayer().getId() == player.getId())
                 .toArray(PlayerHistoryDTO[]::new);
     }
+
+    @Override
+    public PlayerHistoryDTO[] getPlayersHistoryInTeam(TeamDTO team) {
+        Path path = TextConnectorUtils.fullFilePath(playerHistoryFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<PlayerHistoryDTO> playerHistories = playerHistoryMapper.ToDTOList(lines);
+
+        LocalDate currentDate = LocalDate.now();
+
+        return playerHistories.stream()
+                .filter(playerHistory -> playerHistory.getTeam().getId() == team.getId())
+                .filter(playerHistory -> {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                    LocalDate startDate = LocalDate.parse(playerHistory.getStartDate(), formatter);
+                    LocalDate endDate = LocalDate.parse(playerHistory.getEndDate(), formatter);
+                    return startDate.isBefore(currentDate) && endDate.isAfter(currentDate);
+                })
+                .toArray(PlayerHistoryDTO[]::new);
+    }
 }

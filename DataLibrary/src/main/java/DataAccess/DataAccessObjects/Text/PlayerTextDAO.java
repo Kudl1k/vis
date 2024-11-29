@@ -68,6 +68,18 @@ public class PlayerTextDAO implements IPlayerDAO {
 
     @Override
     public PlayerDTO[] GetPlayersByTeam(TeamDTO team) {
-        return new PlayerDTO[0];
+        Path path = TextConnectorUtils.fullFilePath(playerFile);
+        Iterable<String> lines = TextConnectorUtils.loadFile(path);
+        ArrayList<PlayerDTO> players = playerMapper.ToDTOList(lines);
+        PlayerHistoryDTO[] playerHistories = new PlayerHistoryTextDAO().getPlayersHistoryInTeam(team);
+
+        return players.stream().filter(p -> {
+            for (PlayerHistoryDTO ph : playerHistories) {
+                if (ph.getPlayer().getId() == p.getId()) {
+                    return true;
+                }
+            }
+            return false;
+        }).toArray(PlayerDTO[]::new);
     }
 }
