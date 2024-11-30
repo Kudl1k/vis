@@ -32,7 +32,7 @@ public class CategorySqlDAO implements ICategoryDAO {
         List<CategoryDTO> categories = new ArrayList<>();
         try(Connection connection = getConnection()){
             if (connection != null) {
-                String sql = "SELECT name FROM Category;";
+                String sql = "SELECT name FROM Categories;";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 ResultSet rs = statement.executeQuery();
                 while (rs.next()) {
@@ -51,14 +51,18 @@ public class CategorySqlDAO implements ICategoryDAO {
     public CategoryDTO GetCategory(String name) {
         try(Connection connection = getConnection()){
             if (connection != null) {
-                String sql = "SELECT name FROM Category WHERE name = ?;";
+                String sql = "SELECT name FROM Categories WHERE name = ?;";
                 PreparedStatement statement = connection.prepareStatement(sql);
                 statement.setString(1, name);
                 ResultSet rs = statement.executeQuery();
+
+
+
                 if (rs.next()) {
-                    return new CategoryDTO(
+                    CategoryDTO category = new CategoryDTO(
                             rs.getString("name")
                     );
+                    return category;
                 }
             }
         } catch (SQLException e) {

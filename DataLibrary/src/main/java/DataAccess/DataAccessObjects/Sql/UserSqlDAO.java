@@ -5,6 +5,8 @@ import DataAccess.DataAccessObjects.Interface.IUserDAO;
 import DataTransferObjects.UserDTO;
 
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static DataAccess.Connectors.SqlConnectorUtils.getConnection;
 
@@ -36,13 +38,27 @@ public class UserSqlDAO implements IUserDAO {
     public UserDTO LoginUser(String email, String password) {
         try(Connection connection = getConnection()) {
             if (connection != null) {
+
+
                 String query = "SELECT * FROM users WHERE email = ? AND password = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, email);
                 preparedStatement.setString(2, password);
 
+
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
+
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+                    query = "UPDATE users SET last_log = ? WHERE email = ?";
+                    preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
+                    preparedStatement.setString(2, email);
+                    preparedStatement.executeUpdate();
+
+
+
                     return new UserDTO(
                             resultSet.getInt("id"),
                             resultSet.getString("name"),
@@ -51,7 +67,7 @@ public class UserSqlDAO implements IUserDAO {
                             resultSet.getString("password"),
                             resultSet.getString("role"),
                             resultSet.getString("created_at"),
-                            resultSet.getString("updated_at")
+                            resultSet.getString("last_log")
                     );
                 }
             }
@@ -79,7 +95,7 @@ public class UserSqlDAO implements IUserDAO {
                             resultSet.getString("password"),
                             resultSet.getString("role"),
                             resultSet.getString("created_at"),
-                            resultSet.getString("updated_at")
+                            resultSet.getString("last_log")
                     );
                 }
             }

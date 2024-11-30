@@ -1,1 +1,1 @@
-loggedInUser=1,Stepan,Kudlacek,kud0132@vsb.cz,kudla,admin,2024-11-29 07:11:01,2024-11-15 12:33:34
+loggedInUser=1,Stepan,Kudlacek,kud0132@vsb.cz,kudla,admin,2024-11-30 11:16:02.348028,null

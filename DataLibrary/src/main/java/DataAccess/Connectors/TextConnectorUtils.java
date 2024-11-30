@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class TextConnectorUtils {
     public static Path fullFilePath(String fileName){
-        return Paths.get(GlobalConfig.dataFilesPath() + "/" + fileName);
+        return Paths.get(GlobalConfig.dataFilePath() + "/" + fileName);
     }
 
     public static Iterable<String> loadFile(Path fullPath) {

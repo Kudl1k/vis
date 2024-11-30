@@ -4,17 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Working match log">
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnectorUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/TeamSqlDAO.java" afterDir="false" />
+    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Started working on sql">
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/MatchSqlDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/PlayerHistorySqlDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/PlayerSqlDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/GlobalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/GlobalConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnectorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnectorUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnectorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnectorUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/CategorySqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/CategorySqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/GoalHistorySqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/GoalHistorySqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/TeamSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/TeamSqlDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../GoalHistory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../GoalHistory.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matches.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Matches.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../user_settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../user_settings.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +153,8 @@
       <workItem from="1732813843749" duration="13273000" />
       <workItem from="1732856134995" duration="12768000" />
       <workItem from="1732875238880" duration="4128000" />
-      <workItem from="1732903199896" duration="3008000" />
+      <workItem from="1732903199896" duration="3069000" />
+      <workItem from="1732958938843" duration="6712000" />
     </task>
     <task id="LOCAL-00001" summary="Create user and Login works">
       <option name="closed" value="true" />
@@ -224,7 +236,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732893627205</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Started working on sql">
+      <option name="closed" value="true" />
+      <created>1732916670414</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732916670414</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,6 +272,7 @@
     <MESSAGE value="Working transfers" />
     <MESSAGE value="Working goal history" />
     <MESSAGE value="Working match log" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working match log" />
+    <MESSAGE value="Started working on sql" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started working on sql" />
   </component>
 </project>

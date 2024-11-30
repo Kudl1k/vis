@@ -3,6 +3,7 @@ package cz.kudladev.core;
 import DataAccess.Connectors.TextConnectorUtils;
 import DomainModels.MatchDomainModel;
 import DomainModels.UserDomainModel;
+import Services.UserService;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
@@ -18,6 +19,7 @@ import java.util.List;
 public class LiteSportAppState {
     private static final String USER_SETTINGS = "user_settings.txt";
 
+    private UserService userService = new UserService();
 
     private static LiteSportAppState instance = new LiteSportAppState();
     private Boolean rememberMe = false;
@@ -78,6 +80,7 @@ public class LiteSportAppState {
                     switch (parts[0]) {
                         case "loggedInUser":
                             setLoggedInUser(UserDomainModel.fromString(parts[1]));
+                            userService.Login(loggedInUser.getEmail(), loggedInUser.getPassword());
                             break;
                     }
                 }
