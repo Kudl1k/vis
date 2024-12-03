@@ -1,13 +1,16 @@
 package DataAccess.DataAccessObjects.Interface;
 
+import DataTransferObjects.FavouriteDTO;
 import DataTransferObjects.MatchDTO;
 import DataTransferObjects.UserDTO;
 
 public interface IFavouriteDAO {
-    boolean CreateFavourite(int customerID, int itemID);
-    boolean DeleteFavourite(int customerID, int itemID);
-    int[] GetFavourites(int customerID);
-    boolean IsFavourite(int customerID, int itemID);
-    UserDTO[] GetFavouriteUsers(int itemID);
-    MatchDTO[] GetFavouriteMatches(int customerID);
+
+    boolean CreateFavourite(FavouriteDTO favourite);
+    boolean RemoveFavourite(FavouriteDTO favourite);
+
+    FavouriteDTO[] GetFavourites();
+    FavouriteDTO[] GetFavouritesByMatch(MatchDTO match);
+    FavouriteDTO[] GetFavouritesByUser(UserDTO user);
+    boolean GetFavouriteByUserAndMatch(UserDTO user, MatchDTO match);
 }

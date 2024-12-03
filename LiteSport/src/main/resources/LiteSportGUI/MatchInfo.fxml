@@ -13,6 +13,11 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
+                        <VBox>
+                           <children>
+                              <Button fx:id="FavoriteButton" mnemonicParsing="false" onAction="#onFavorite" text="Favorite" />
+                           </children>
+                        </VBox>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <HBox.margin>
                               <Insets right="20.0" />

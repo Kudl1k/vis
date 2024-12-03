@@ -114,8 +114,13 @@ public class LiteSportAppController implements Initializable {
         Button logoutButton = new Button("Logout");
         logoutButton.setId("logoutButton");
         logoutButton.setOnAction(e -> LiteSportAppState.getInstance().logOutUser());
+
+        Button notificationsButton = new Button("Notifications");
+        notificationsButton.setId("notificationsButton");
+        notificationsButton.setOnAction(this::openNotifications);
+
         Label usernameLabel = new Label(LiteSportAppState.getInstance().getLoggedInUser().getName() + " " + LiteSportAppState.getInstance().getLoggedInUser().getSurname());
-        LiteSportHeader.getChildren().addAll(usernameLabel, logoutButton);
+        LiteSportHeader.getChildren().addAll(usernameLabel,notificationsButton, logoutButton);
         if (LiteSportAppState.getInstance().getLoggedInUser().getRole().equals("admin")) {
             Button adminButton = new Button("Admin");
             adminButton.setId("adminButton");
@@ -178,5 +183,9 @@ public class LiteSportAppController implements Initializable {
         footballMatches.setAll(matches);
     }
 
+
+    public void openNotifications(ActionEvent actionEvent) {
+        LiteSportApp.openWindow("Notifications", 600, 400);
+    }
 
 }

@@ -11,13 +11,13 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoalHistoryTextDao implements IGoalHistoryDAO {
+public class GoalHistoryTextDAO implements IGoalHistoryDAO {
 
     public static String goalHistoryFile = "GoalHistory.csv";
 
     private GoalHistoryTextDataMapper goalHistoryMapper;
 
-    public GoalHistoryTextDao() {
+    public GoalHistoryTextDAO() {
         goalHistoryMapper = new GoalHistoryTextDataMapper();
     }
 

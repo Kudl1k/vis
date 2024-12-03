@@ -12,6 +12,7 @@ import lombok.Setter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -28,6 +29,7 @@ public class LiteSportAppState {
     private String footballSelectedCategory = "";
     private MatchDomainModel selectedMatch = null;
     private MatchDomainModel[] matches = null;
+    private ArrayList<String> notifications = new ArrayList<String>();
 
     private LiteSportAppState() {
         // private constructor to prevent instantiation
@@ -88,6 +90,15 @@ public class LiteSportAppState {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void addNotification(String notification){
+        if(notifications == null){
+            notifications = new ArrayList<>();
+        }
+        notifications.add(notification);
+        System.out.println("Notification added: " + notification);
+        notifications.forEach(System.out::println);
     }
 
     public static LiteSportAppState getInstance() {

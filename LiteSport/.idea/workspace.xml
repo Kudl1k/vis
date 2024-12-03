@@ -4,25 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Started working on sql">
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/MatchSqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/PlayerHistorySqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/PlayerSqlDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/config.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/GlobalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/GlobalConfig.java" afterDir="false" />
+    <list default="true" id="2e276564-24a6-4b3b-8bd2-e7403864de69" name="Changes" comment="Sql done">
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/FavouriteSqlDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/FavouriteTextDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/DomainModels/FavouriteDomainModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Mappers/FavouriteDomainMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../DomainLayer/src/main/java/Services/FavouriteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/notifications/NotificationsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/Notifications.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnectorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/SqlConnectorUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnectorUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnectorUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/CategorySqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/CategorySqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/GoalHistorySqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/GoalHistorySqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/LeagueSqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/TeamSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/TeamSqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Sql/UserSqlDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../GoalHistory.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../GoalHistory.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/Connectors/TextConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IFavouriteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Interface/IFavouriteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/FavouriteTextDataMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Mappers/FavouriteTextDataMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/GoalHistoryTextDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../DataLibrary/src/main/java/DataAccess/DataAccessObjects/Text/GoalHistoryTextDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/core/LiteSportAppState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cz/kudladev/info/MatchInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cz/kudladev/info/MatchInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/MatchInfo.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/LiteSportGUI/MatchInfo.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Matches.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Matches.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Users.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../Users.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../user_settings.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../user_settings.txt" afterDir="false" />
@@ -98,7 +98,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -154,7 +154,11 @@
       <workItem from="1732856134995" duration="12768000" />
       <workItem from="1732875238880" duration="4128000" />
       <workItem from="1732903199896" duration="3069000" />
-      <workItem from="1732958938843" duration="6712000" />
+      <workItem from="1732958938843" duration="6850000" />
+      <workItem from="1732996039188" duration="1490000" />
+      <workItem from="1733161641568" duration="5277000" />
+      <workItem from="1733230616215" duration="1924000" />
+      <workItem from="1733232652094" duration="1210000" />
     </task>
     <task id="LOCAL-00001" summary="Create user and Login works">
       <option name="closed" value="true" />
@@ -244,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732916670414</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Sql done">
+      <option name="closed" value="true" />
+      <created>1732968478890</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1732968478890</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +285,11 @@
     <MESSAGE value="Working goal history" />
     <MESSAGE value="Working match log" />
     <MESSAGE value="Started working on sql" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started working on sql" />
+    <MESSAGE value="Sql done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sql done" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,10 +1,8 @@
 package cz.kudladev.info;
 
 import DataTransferObjects.PlayerDTO;
-import DomainModels.GoalHistoryDomainModel;
-import DomainModels.MatchDomainModel;
-import DomainModels.PlayerDomainModel;
-import DomainModels.TeamDomainModel;
+import DomainModels.*;
+import Services.FavouriteService;
 import Services.GoalHistoryService;
 import Services.MatchService;
 import Services.PlayerService;
@@ -29,6 +27,10 @@ public class MatchInfoController implements Initializable {
     private PlayerService playerService;
     private GoalHistoryService goalHistoryService;
     private MatchService matchService;
+    private FavouriteService favouriteService;
+
+    @FXML
+    private Button FavoriteButton;
 
     @FXML
     private Label homeTeam;
@@ -78,6 +80,7 @@ public class MatchInfoController implements Initializable {
         playerService = new PlayerService();
         goalHistoryService = new GoalHistoryService();
         matchService = new MatchService();
+        favouriteService = new FavouriteService();
     }
 
 
@@ -96,6 +99,11 @@ public class MatchInfoController implements Initializable {
             this.goalsList = FXCollections.observableArrayList(goals);
             SetMatchInfoView();
             SetupAdminPanel();
+            if (favouriteService.GetFavouriteByUserAndMatch(LiteSportAppState.getInstance().getLoggedInUser(), LiteSportAppState.getInstance().getSelectedMatch())){
+                FavoriteButton.setStyle("-fx-text-fill: green");
+            } else {
+                FavoriteButton.setStyle("-fx-text-fill: red");
+            }
         }
     }
 
@@ -152,6 +160,12 @@ public class MatchInfoController implements Initializable {
         if (goalHistoryService.AddGoalHistory(goal)){
             System.out.println("Goal added");
             goalsList.add(goal);
+
+            if (favouriteService.GetFavouriteByUserAndMatch(LiteSportAppState.getInstance().getLoggedInUser(), match)){
+                System.out.println("Notification added");
+                LiteSportAppState.getInstance().addNotification("New goal in match " + match.getHomeTeam().getName() + " vs " + match.getAwayTeam().getName() + " at " + minute + " minute");
+            }
+
             SetMatchInfo();
             SetMatchInfoView();
             new LiteSportAppController().updateMatches();
@@ -185,14 +199,32 @@ public class MatchInfoController implements Initializable {
     @FXML
     private void onEndMatch(){
         MatchDomainModel match = LiteSportAppState.getInstance().getSelectedMatch();
-
         if (matchService.EndMatch(match)){
             SetMatchInfo();
             SetupAdminPanel();
             new LiteSportAppController().updateMatches();
         }
-
     }
 
-
+    @FXML
+    private void onFavorite(){
+        MatchDomainModel match = LiteSportAppState.getInstance().getSelectedMatch();
+        UserDomainModel user = LiteSportAppState.getInstance().getLoggedInUser();
+        FavouriteDomainModel favourite = new FavouriteDomainModel(user, match);
+        if (favouriteService.GetFavouriteByUserAndMatch(user, match)){
+            if (favouriteService.RemoveFavourite(favourite)){
+                System.out.println("Favourite removed");
+                FavoriteButton.setStyle("-fx-text-fill: red");
+            } else {
+                System.out.println("Error removing favourite");
+            }
+        } else {
+            if (favouriteService.AddFavourite(favourite)){
+                System.out.println("Favourite added");
+                FavoriteButton.setStyle("-fx-text-fill: green");
+            } else {
+                System.out.println("Error adding favourite");
+            }
+        }
+    }
 }

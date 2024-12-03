@@ -25,6 +25,7 @@ public class SqlConnector implements IDataConnection{
         this.playerDao = new PlayerSqlDAO();
         this.teamDao = new TeamSqlDAO();
         this.userDao = new UserSqlDAO();
+        this.favouriteDao = new FavouriteSqlDAO();
     }
 
 

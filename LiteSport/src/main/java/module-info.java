@@ -13,5 +13,6 @@ module cz.kudladev.LiteSport {
     opens cz.kudladev.auth.register to javafx.fxml;
     opens cz.kudladev.admin to javafx.fxml;
     opens cz.kudladev.info to javafx.fxml;
+    opens cz.kudladev.notifications to javafx.fxml;
     exports cz.kudladev;
 }
